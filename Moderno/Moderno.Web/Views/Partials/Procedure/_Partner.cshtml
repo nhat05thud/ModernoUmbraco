@@ -1,0 +1,19 @@
+﻿@inherits UmbracoTemplatePage
+@{
+    var partner = Model.Content.Site().FirstChild("procedure").Children().FirstOrDefault(x => x.DocumentTypeAlias == "partner");
+}
+@if (partner != null)
+{
+    <div class="partner__carousel owl-carousel">
+        @foreach (var item in partner.Children)
+        {
+            var thumb = Umbraco.TypedMedia(item.GetPropertyValue<int>("image"));
+            <div class="item">
+                <a href="@item.GetPropertyValue("link")">
+                    <img class="owl-lazy" data-src="@(thumb != null ? thumb.GetCropUrl(225, 120, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=225&height=120&bgcolor=fff&slimmage=true&rnd=" + item.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
+                </a>
+            </div>
+        }
+    </div>
+
+}

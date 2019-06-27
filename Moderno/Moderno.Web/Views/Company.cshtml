@@ -1,0 +1,91 @@
+﻿@using Moderno.Web.ClassHelpers
+@inherits UmbracoTemplatePage
+@{
+    Layout = "Master.cshtml";
+    var home = CurrentPage.AncestorOrSelf(1);
+    var current = (IPublishedContent) CurrentPage;
+    var introImage = Umbraco.TypedMedia(current.GetPropertyValue<int>("introImage"));
+    var companyImage = Umbraco.TypedMedia(current.GetPropertyValue<int>("companyImage"));
+    var companyItems = current.Descendants("companyItem").OrderByDescending(x => x.CreateDate);
+}
+
+<div class="wrap__company">
+    <div class="company__team">
+        <div class="companu__team_image">
+            <img class="img-full" src="@(introImage != null ? introImage.GetCropUrl(1040, 580, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=1040&height=580&bgcolor=fff&slimmage=true&rnd=" + current.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
+        </div>
+    </div>
+    @Html.Partial("~/Views/Partials/Layout/_SocialMedia.cshtml")
+    <div class="company__team">
+        <div class="companu__team_image">
+            <img class="img-full" src="@(companyImage != null ? companyImage.GetCropUrl(1040, 580, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=1040&height=580&bgcolor=fff&slimmage=true&rnd=" + current.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
+            <p>@current.GetPropertyValue("companyTitle")</p>
+        </div>
+    </div>
+    <div class="company__team_trip-grid">
+        @if (companyItems != null)
+        {
+            var items = companyItems.ToList().Partition(5).ToList();
+            foreach (var child in items)
+            {
+                foreach (var item in child)
+                {
+                    var thumb = Umbraco.TypedMedia(item.GetPropertyValue<int>("image"));
+                    <div class="item item-@(child.IndexOf(item) + 1) hover__15">
+                        <a data-fancybox="gallery" href="@(thumb != null ? thumb.Url : "/images/no-image.png")" data-caption="@item.Name">
+                            @if (child.IndexOf(item) == 1)
+                            {
+                                <img class="lazyload" data-original="@(thumb != null ? thumb.GetCropUrl(529, 340, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=529&height=340&bgcolor=fff&slimmage=true&rnd=" + current.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
+                            }
+                            else if (child.IndexOf(item) == 3 || child.IndexOf(item) == 4)
+                            {
+                                <img class="lazyload" data-original="@(thumb != null ? thumb.GetCropUrl(505, 340, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=505&height=340&bgcolor=fff&slimmage=true&rnd=" + current.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
+                            }
+                            else if (child.IndexOf(item) == 5)
+                            {
+                                <img class="lazyload" data-original="@(thumb != null ? thumb.GetCropUrl(1040, 500, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=1040&height=500&bgcolor=fff&slimmage=true&rnd=" + current.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
+                            }
+                            else
+                            {
+                                <img class="lazyload" data-original="@(thumb != null ? thumb.GetCropUrl(263, 340, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=263&height=340&bgcolor=fff&slimmage=true&rnd=" + current.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
+                            }
+                        </a>
+                    </div>
+                }
+            }
+        }
+    </div>
+    @Html.Partial("~/Views/Partials/_Recruitment.cshtml")
+    <div class="company__info">
+        <div class="company__info-address d-inline-block">
+            <ul>
+                <li>
+                    <i class="mysprite ct-phone"></i>
+                    <div class="text">
+                        <a href="tel:@(!string.IsNullOrEmpty(home.GetPropertyValue<string>("phoneNumber")) ? home.GetPropertyValue<string>("phoneNumber").Replace(" ","") : "")">@home.GetPropertyValue("phoneNumber")</a>
+                    </div>
+                </li>
+                <li>
+                    <i class="mysprite ct-mail"></i>
+                    <div class="text">
+                        <a href="mailto:@(home.GetPropertyValue("email"))">@(home.GetPropertyValue("email"))</a>
+                    </div>
+                </li>
+                <li>
+                    <i class="mysprite ct-address"></i>
+                    <div class="text">
+                        Địa chỉ: @home.GetPropertyValue("address")
+                    </div>
+                </li>
+                <li>
+                    <i class="mysprite ct-openclose"></i>
+                    <div class="text">Open - Close: @home.GetPropertyValue("openCloseTime")</div>
+                </li>
+            </ul>
+        </div>
+        <div class="company__info-maps d-inline-block">
+            @Html.Raw(home.GetPropertyValue("googleMaps"))
+        </div>
+    </div>
+</div>
+

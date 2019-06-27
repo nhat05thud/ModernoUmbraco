@@ -1,0 +1,33 @@
+﻿@inherits UmbracoViewPage<Moderno.Web.Models.ContactForm>
+@{
+}
+@Html.AntiForgeryToken()
+<label class="form__input">
+    @Html.TextBoxFor(x => x.Name, new { placeholder = " " })
+    <span class="label">Họ & Tên</span>
+    <span class="border"></span>
+    @Html.ValidationMessageFor(x => x.Name)
+</label>
+<label class="form__input">
+    @Html.TextBoxFor(x => x.PhoneNumber, new { placeholder = " " })
+    <span class="label">Số điện thoại</span>
+    <span class="border"></span>
+    @Html.ValidationMessageFor(x => x.PhoneNumber)
+</label>
+<label class="form__input">
+    @Html.TextBoxFor(x => x.Email, new { placeholder = " " })
+    <span class="label">Email</span>
+    <span class="border"></span>
+    @Html.ValidationMessageFor(x => x.Email)
+</label>
+<label class="form__input">
+    @Html.TextBoxFor(x => x.Address, new { placeholder = " " })
+    <span class="label">Địa chỉ công trình</span>
+    <span class="border"></span>
+</label>
+<label class="form__input">
+    @Html.TextBoxFor(x => x.Acreage, new { placeholder = " " })
+    <span class="label">Diện tích công trình</span>
+    <span class="border"></span>
+</label>
+<div class="loading_div"></div>

@@ -1,0 +1,55 @@
+﻿@inherits UmbracoTemplatePage
+@{
+    Layout = "Master.cshtml";
+    var home = (IPublishedContent)CurrentPage.AncestorOrSelf(1);
+}
+
+<div class="wrap__categories">
+    @foreach (var item in home.Children)
+    {
+        var thumb = Umbraco.TypedMedia(item.GetPropertyValue<int>("image"));
+        <div class="item">
+            <a href="@item.Url">
+                @if (item.DocumentTypeAlias == "project")
+                {
+                    <img src="@(thumb != null ? thumb.GetCropUrl(392, 535, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=392&height=535&bgcolor=fff&slimmage=true&rnd=" + item.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
+                }
+                else
+                {
+                    <img src="@(thumb != null ? thumb.GetCropUrl(345, 535, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=345&height=535&bgcolor=fff&slimmage=true&rnd=" + item.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
+                }
+                <div class="circle">
+                    <p>@item.Name</p>
+                </div>
+            </a>
+        </div>
+    }
+</div>
+<div class="wrap__video">
+    @{
+        var videoImage = Umbraco.TypedMedia(home.GetPropertyValue<int>("videoImage"));
+        var videoFile = Umbraco.TypedMedia(home.GetPropertyValue<int>("video"));
+        var videoLink = home.GetPropertyValue<string>("linkVideoOnline");
+    }
+    <div class="wrap__video-left">
+        <img src="@(videoImage != null ? videoImage.GetCropUrl(972, 450, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=972&height=450&bgcolor=fff&slimmage=true&rnd=" + home.UpdateDate.ToString("ddMMyyyhhmmss"))https://via.placeholder.com/972x450" alt=""/>
+        @if (videoFile != null)
+        {
+            <a data-fancybox href="#myVideo" data-source="@videoFile.Url" class="button-play" onclick="initVideo(this)"><i class="mysprite play"></i></a>
+        }
+        else
+        {
+            if (!string.IsNullOrEmpty(videoLink))
+            {
+                <a data-fancybox href="@(videoLink)" class="button-play"><i class="mysprite play"></i></a>
+            }
+        }
+    </div>
+    <div class="wrap__video-right">
+        @Html.Partial("~/Views/Partials/Layout/_SocialMedia.cshtml")
+    </div>
+</div>
+@if (videoFile != null)
+{
+    <video controls id="myVideo" style="display:none;"></video>
+}

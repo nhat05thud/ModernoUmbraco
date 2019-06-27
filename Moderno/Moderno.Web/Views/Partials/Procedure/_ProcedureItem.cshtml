@@ -1,0 +1,14 @@
+﻿@inherits UmbracoViewPage<Moderno.Web.Models.ProcedureItems>
+
+@foreach (var item in Model.LstItems)
+{
+    var thumb = Umbraco.TypedMedia(item.GetPropertyValue<int>("image"));
+    <div class="item hover__15">
+        <div class="img">
+            <a href="@item.Url">
+                <img class="lazyload" data-original="@(thumb != null ? thumb.GetCropUrl(360, 250, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=360&height=250&bgcolor=fff&slimmage=true&rnd=" + item.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
+            </a>
+        </div>
+        <a href="@item.Url">@item.Name</a>
+    </div>
+}

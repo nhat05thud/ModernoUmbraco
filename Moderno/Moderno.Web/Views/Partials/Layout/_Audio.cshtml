@@ -1,0 +1,29 @@
+﻿@inherits UmbracoTemplatePage
+@{
+    var home = (IPublishedContent)CurrentPage.AncestorOrSelf(1);
+    var audio = Umbraco.TypedMedia(home.GetPropertyValue<int>("audio"));
+    var logo = Umbraco.TypedMedia(home.GetPropertyValue<int>("logo"));
+}
+@if (audio != null)
+{
+    <iframe src="@audio.Url" allow="autoplay" id="audio__active_tag" style="display:none"></iframe>
+    <audio id="audio__player" autoplay loop>
+        <source src="@audio.Url" type="audio/mp3">
+    </audio>
+}
+<!--menumobile-->
+<div id="menumobile" class="mobile-panel mobilep-left">
+    <div class="menu-in">
+        <div class="menu-mobile">
+            <div class="logo">
+                <a id="A2" href="/">
+                    <img src="@(logo != null ? logo.Url : "/images/logo.png")" alt="" />
+                </a>
+            </div>
+            <ul id="menuMobiles" class="menu-nav">
+                <li><a href="/">Trang chủ</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--menumobile-->

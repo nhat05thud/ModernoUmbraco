@@ -1,0 +1,9 @@
+﻿@inherits UmbracoTemplatePage
+@{
+    var home = (IPublishedContent)CurrentPage.AncestorOrSelf(1);
+}
+<div class="main__follow">
+    <a href="@home.GetPropertyValue("facebook")" target="_blank"><i class="fa fa-facebook"></i></a>
+    <a href="@home.GetPropertyValue("youtube")" target="_blank"><i class="fa fa-youtube-play"></i></a>
+    <a href="@home.GetPropertyValue("instagram")" target="_blank"><i class="fa fa-instagram"></i></a>
+</div>

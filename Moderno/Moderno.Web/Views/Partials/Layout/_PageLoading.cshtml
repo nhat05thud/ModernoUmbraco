@@ -1,0 +1,12 @@
+﻿@inherits UmbracoTemplatePage
+@{
+    var home = (IPublishedContent)CurrentPage.AncestorOrSelf(1);
+    var logo = Umbraco.TypedMedia(home.GetPropertyValue<int>("logo"));
+}
+<div class="page-loading">
+    <div class="loading__wrap">
+        <img src="@(logo != null ? logo.Url : "/images/logo.png")" alt="" />
+        <div class="loading__space"></div>
+        <h1>@home.GetPropertyValue("slogan")</h1>
+    </div>
+</div>

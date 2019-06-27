@@ -1,0 +1,25 @@
+﻿@inherits UmbracoViewPage<Moderno.Web.Models.ContactForm>
+@{
+    Html.EnableClientValidation(true);
+    Html.EnableUnobtrusiveJavaScript(true);
+    Html.EnableClientValidation(true);
+    Html.EnableUnobtrusiveJavaScript(true);
+    // Get the current page
+    //IPublishedContent objModel = Umbraco.TypedContent(UmbracoContext.Current.PageId);
+
+    // Tells the controller what page to add a comment under.
+    //Model.CultureLCID = System.Globalization.CultureInfo.CurrentUICulture.LCID;
+    //var langCode = System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+}
+@using (Ajax.BeginForm("HandleFormContact", "Site", null, new AjaxOptions
+{
+    UpdateTargetId = "contentAjaxForm",
+    HttpMethod = "POST",
+    OnSuccess = "onSuccess",
+    OnFailure = "onFailure"
+}, new { @class = "FormSendMail" }))
+{
+    <div id="contentAjaxForm">
+        @Html.Partial("~/Views/Partials/Contact/_Form.cshtml", Model)
+    </div>
+}

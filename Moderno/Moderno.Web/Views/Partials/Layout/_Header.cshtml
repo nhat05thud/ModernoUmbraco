@@ -1,0 +1,31 @@
+﻿@inherits UmbracoTemplatePage
+@{
+    var home = CurrentPage.AncestorOrSelf(1);
+    var audio = Umbraco.TypedMedia(home.GetPropertyValue<int>("audio"));
+    var logo = Umbraco.TypedMedia(home.GetPropertyValue<int>("logo"));
+}
+<header>
+    <div class="left__header d-inline-block">
+        <a class="d-inline-block" href="/">
+            <img src="@(logo != null ? logo.Url : "/images/logo.png")" alt="" />
+        </a>
+        <span class="d-inline-block">@home.GetPropertyValue("slogan")</span>
+    </div>
+    <div class="right__header d-inline-block text-right">
+        <nav class="d-inline-block">
+            <ul id="menu" class="desktop-992">
+                @foreach (var childPage in home.Children())
+                {
+                    <li class="@(childPage.IsAncestorOrSelf(CurrentPage) ? "active" : null)">
+                        <a href="@childPage.Url">@childPage.Name</a>
+                    </li>
+                }
+            </ul>
+            <a class="panel-a menu-mo ipadmo-992" href="#menumobile" data-position="true" data-type="false"><span class="fa fa-reorder"></span></a>
+        </nav>
+        <div class="hotline d-inline-block">
+            <a href="tel:@(!string.IsNullOrEmpty(home.GetPropertyValue<string>("hotline")) ? home.GetPropertyValue<string>("hotline").Replace(" ", "") : "")">@home.GetPropertyValue("hotline")</a>
+        </div>
+    </div>
+    <i class="mysprite @(audio != null ? "speaker" : "speaker-mute")" id="btn__play-audio"></i>
+</header>

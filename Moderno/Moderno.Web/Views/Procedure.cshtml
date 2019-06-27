@@ -1,0 +1,56 @@
+﻿@using Moderno.Web.Models
+@inherits UmbracoTemplatePage
+@{
+    Layout = "Master.cshtml";
+    var current = (IPublishedContent) CurrentPage;
+    var desktopImage = Umbraco.TypedMedia(current.GetPropertyValue<int>("desktopImage"));
+    var mobileImage = Umbraco.TypedMedia(current.GetPropertyValue<int>("mobileImage"));
+    var lstItems = current.Descendants("procedureItem").OrderByDescending(x => x.CreateDate).Take(6);
+}
+
+<div class="wrap__procedure">
+    @Html.Partial("~/Views/Partials/Procedure/_Banner.cshtml")
+    <div class="procedure__steps">
+        <div class="text-center">
+            <div class="procedure__steps-title">
+                <h1>@current.GetPropertyValue("procedureTitle")</h1>
+            </div>
+        </div>
+        <div class="procedure__steps-image">
+            @if (desktopImage != null)
+            {
+                <img class="img-full desktop-992" src="@(desktopImage.GetCropUrl(1160, 960, furtherOptions: "&slimmage=true"))" alt=""/>
+            }
+            @if (mobileImage != null)
+            {
+                <img class="img-full ipadmo-992" src="@(mobileImage.Url)" alt=""/>
+            }
+        </div>
+    </div>
+    @Html.Partial("~/Views/Partials/Procedure/_Partner.cshtml")
+    @Html.Partial("~/Views/Partials/Layout/_SocialMedia.cshtml")
+    <div class="procedure__news">
+        @foreach (var item in lstItems)
+        {
+            var thumb = Umbraco.TypedMedia(item.GetPropertyValue<int>("image"));
+            <div class="item hover__15">
+                <div class="img">
+                    <a href="@item.Url">
+                        <img class="lazyload" data-original="@(thumb != null ? thumb.GetCropUrl(360, 250, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=360&height=250&bgcolor=fff&slimmage=true&rnd=" + item.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
+                    </a>
+                </div>
+                <a href="@item.Url">@item.Name</a>
+            </div>
+        }
+    </div>
+    @if (lstItems.Count() >= 5)
+    {
+        <div class="loadmore__project text-center">
+            <a onclick="loadProcedure(this)" data-times="1">
+                <p>Xem thêm</p>
+                <i class="mysprite more"></i>
+            </a>
+        </div>
+    }
+    @Html.Partial("~/Views/Partials/Contact/_Contact.cshtml", new ContactForm())
+</div>

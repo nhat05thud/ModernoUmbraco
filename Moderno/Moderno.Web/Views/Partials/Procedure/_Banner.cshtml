@@ -1,0 +1,16 @@
+﻿@inherits UmbracoTemplatePage
+@{
+    var procedure = Model.Content.Site().FirstChild("procedure");
+    var banner = procedure.GetPropertyValue<IEnumerable<IPublishedContent>>("bannerImages");
+}
+@if (banner != null)
+{
+    <div class="procedure__banner owl-carousel">
+        @foreach (var item in banner)
+        {
+            <div class="item">
+                <img class="owl-lazy" data-src="@(item.GetCropUrl(1140, 405, furtherOptions: "&slimmage=true"))" alt="" />
+            </div>
+        }
+    </div>
+}

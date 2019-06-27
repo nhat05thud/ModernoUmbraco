@@ -1,0 +1,35 @@
+﻿@using System.Web.Optimization
+@inherits UmbracoTemplatePage
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.ico" type="image/icon" sizes="16x16">
+    @RenderSection("_Share", false)
+    @Html.Partial("~/Views/Partials/Layout/_Share.cshtml")
+    @Styles.Render("~/bundles/style")
+</head>
+<body>
+@Html.Partial("~/Views/Partials/Layout/_PageLoading.cshtml")
+    <div id="wrapper">
+        <div id="wrapper-in">
+            <div style="padding: 0 15px;">
+                @Html.Partial("~/Views/Partials/Layout/_Header.cshtml")
+                <div id="main-content">
+                    @RenderBody()
+                </div>
+                <footer></footer>
+            </div>
+        </div>
+        @Html.Partial("~/Views/Partials/Layout/_Audio.cshtml")
+    </div>
+    <a href="#" class="scroll-to-top"></a>
+    @Scripts.Render("~/bundles/scripts")
+</body>
+</html>

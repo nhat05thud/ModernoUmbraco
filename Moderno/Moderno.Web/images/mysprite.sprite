@@ -1,0 +1,25 @@
+{
+  "images": {
+    "speaker": "speaker.png",
+    "speaker-mute": "speaker-mute.png",
+    "hotline": "hotline.png",
+    "play": "play.png",
+    "ct-address": "ct-address.png",
+    "ct-mail": "ct-mail.png",
+    "ct-openclose": "ct-openclose.png",
+    "ct-phone": "ct-phone.png",
+    "ct-fb": "ct-fb.png",
+    "more": "more.png",
+    "arr_prev": "arr_prev.png"
+  },
+  "orientation": "vertical",
+  "optimize": "lossless",
+  "padding": 10,
+  "output": "png",
+  "stylesheet": "css",
+  "pathprefix": "",
+  "customstyles": {
+    "display": "inline-block"
+  },
+  "appendcachebustspritesuffix": false
+}

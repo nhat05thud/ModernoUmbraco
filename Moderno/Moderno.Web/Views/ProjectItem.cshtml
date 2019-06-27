@@ -1,0 +1,114 @@
+﻿@using Moderno.Web.ClassHelpers
+@using Moderno.Web.Models
+@inherits UmbracoTemplatePage
+@{
+    Layout = "Master.cshtml";
+    var home = (IPublishedContent)CurrentPage.AncestorOrSelf(1);
+    var current = (IPublishedContent)CurrentPage;
+}
+
+<div class="wrap__project">
+    <div class="project__details">
+        <div class="project__details-content">
+            <h1>@current.Name</h1>
+            <p class="location">@current.GetPropertyValue("location")</p>
+            <p class="acreage">Diện tích: @current.GetPropertyValue("acreage")</p>
+            <p class="acreage">Năm hoàn thành: @current.GetPropertyValue("yearComplete")</p>
+            <div class="wrap-content">
+                @current.GetPropertyValue("content")
+            </div>
+        </div>
+    </div>
+    @{
+        var lstMediaFirst = current.GetPropertyValue<IEnumerable<IPublishedContent>>("designImages");
+    }
+    @if (lstMediaFirst.Any())
+    {
+        var items = lstMediaFirst.ToList().Partition(5).ToList();
+        <div class="project__images" id="list-image-first">
+            @foreach (var child in items)
+            {
+            <div class="wrap__list-images">
+                @foreach (var item in child)
+                {
+                    var lstItem = new List<int> { 0, 1, 2 };
+                    <div class="hover__15">
+                        <a data-fancybox="gallery" href="@(item.Url)">
+                            @if (lstItem.Contains(child.IndexOf(item)))
+                            {
+                                <img class="lazyload" data-original="@(item.GetCropUrl(1140, 500, furtherOptions: "&slimmage=true"))" alt="" />
+                            }
+                            else
+                            {
+                                <img class="lazyload" data-original="@(item.GetCropUrl(555, 500, furtherOptions: "&slimmage=true"))" alt="" />
+                            }
+                        </a>
+                    </div>
+                }
+            </div>
+            }
+        </div>
+        <div class="contact__info text-center" style="padding: 0 0 15px;">
+            <div class="contact__item"><a href="@(!string.IsNullOrEmpty(current.GetPropertyValue<string>("realityVideo")) ? current.GetPropertyValue<string>("realityVideo") : "javascript:void(0)")" target="_blank">THỰC TẾ THI CÔNG</a></div>
+            <div class="contact__item contact__hotline">
+                <a href="tel:@(!string.IsNullOrEmpty(home.GetPropertyValue<string>("hotline")) ? home.GetPropertyValue<string>("hotline").Replace(" ", "") : "")">@home.GetPropertyValue("hotline")</a>
+            </div>
+        </div>
+        if (lstMediaFirst.Count() > 5)
+        {
+            <div class="loadmore__project text-center">
+                <a onclick="loadMoreMediaFirst(this)">
+                    <p>Xem thêm</p>
+                    <i class="mysprite more"></i>
+                </a>
+            </div>
+        }
+    }
+    @{
+        var lstMediaSecond = current.GetPropertyValue<IEnumerable<IPublishedContent>>("realityImages");
+    }
+    @if (lstMediaSecond.Any())
+    {
+        var items = lstMediaSecond.ToList().Partition(6).ToList();
+        <div class="project__images" id="list-image-second">
+            @foreach (var child in items)
+            {
+            <div class="wrap__list-images">
+                @foreach (var item in child)
+                {
+                    var lstItemFirst = new List<int> { 1, 2 };
+                    var lstItemSecond = new List<int> { 3, 4, 5 };
+                    <div class="hover__15">
+                        <a data-fancybox="gallery" href="@(item.Url)">
+                            @if (lstItemFirst.Contains(child.IndexOf(item)))
+                            {
+                                <img class="lazyload" data-original="@(item.GetCropUrl(555, 500, furtherOptions: "&slimmage=true"))" alt="" />
+                            }
+                            else if (lstItemSecond.Contains(child.IndexOf(item)))
+                            {
+                                <img class="lazyload" data-original="@(item.GetCropUrl(360, 300, furtherOptions: "&slimmage=true"))" alt="" />
+                            }
+                            else
+                            {
+                                <img class="lazyload" data-original="@(item.GetCropUrl(1140, 500, furtherOptions: "&slimmage=true"))" alt="" />
+                            }
+                        </a>
+                    </div>
+                }
+            </div>
+            }
+        </div>
+        if (lstMediaSecond.Count() > 5)
+        {
+            <div class="loadmore__project text-center">
+                <a onclick="loadMoreMediaSecond(this)">
+                    <p>Xem thêm</p>
+                    <i class="mysprite more"></i>
+                </a>
+            </div>
+        }
+    }
+    @Html.Partial("~/Views/Partials/Contact/_Contact.cshtml", new ContactForm())
+    @Html.Partial("~/Views/Partials/Layout/_SocialMedia.cshtml")
+</div>
+

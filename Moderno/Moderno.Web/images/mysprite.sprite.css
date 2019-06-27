@@ -1,0 +1,63 @@
+/*
+This is an example of how to use the image sprite in your own CSS files
+*/
+.mysprite {
+    background-image: url('/assets/images/mysprite.sprite.png');
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+.mysprite.speaker {
+	width: 24px;
+	height: 24px;
+	background-position: -10px -10px;
+}
+.mysprite.speaker-mute {
+	width: 24px;
+	height: 24px;
+	background-position: -10px -44px;
+}
+.mysprite.hotline {
+	width: 21px;
+	height: 21px;
+	background-position: -10px -78px;
+}
+.mysprite.play {
+	width: 60px;
+	height: 69px;
+	background-position: -10px -109px;
+}
+.mysprite.ct-address {
+	width: 30px;
+	height: 30px;
+	background-position: -10px -188px;
+}
+.mysprite.ct-mail {
+	width: 30px;
+	height: 29px;
+	background-position: -10px -228px;
+}
+.mysprite.ct-openclose {
+	width: 30px;
+	height: 30px;
+	background-position: -10px -267px;
+}
+.mysprite.ct-phone {
+	width: 30px;
+	height: 30px;
+	background-position: -10px -307px;
+}
+.mysprite.ct-fb {
+	width: 21px;
+	height: 21px;
+	background-position: -10px -347px;
+}
+.mysprite.more {
+	width: 35px;
+	height: 39px;
+	background-position: -10px -378px;
+}
+.mysprite.arr_prev {
+	width: 27px;
+	height: 32px;
+	background-position: -10px -427px;
+}

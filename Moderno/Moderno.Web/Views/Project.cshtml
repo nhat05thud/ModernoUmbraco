@@ -1,0 +1,56 @@
+﻿@inherits UmbracoTemplatePage
+@{
+    Layout = "Master.cshtml";
+    var home = (IPublishedContent)CurrentPage.AncestorOrSelf(1);
+    var current = (IPublishedContent) CurrentPage;
+    var lstItems = current.Children.OrderByDescending(x => x.CreateDate).Take(7);
+}
+
+<div class="wrap__project">
+    <div class="project__category">
+        <div class="list-item">
+            @foreach (var item in lstItems)
+            {
+                var lstItem = new List<int> { 0, 1, 2, 3 };
+                var thumb = Umbraco.TypedMedia(item.GetPropertyValue<int>("image"));
+                <div class="item @(lstItem.Contains(lstItems.IndexOf(item)) ? "item-1" : "item-2")">
+                    <a href="@item.Url">
+                        @if (lstItem.Contains(lstItems.IndexOf(item)))
+                        {
+                            <img class="lazyload" data-original="@(thumb != null ? thumb.GetCropUrl(360, 325, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=360&height=325&bgcolor=fff&slimmage=true&rnd=" + item.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
+                        }
+                        else
+                        {
+                            <img class="lazyload" data-original="@(thumb != null ? thumb.GetCropUrl(555, 500, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=555&height=500&bgcolor=fff&slimmage=true&rnd=" + item.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
+                        }
+                        <div class="content">
+                            <h1>@item.Name</h1>
+                            <div class="desc">
+                                <span>@item.GetPropertyValue("location")</span> | <span>@item.GetPropertyValue("acreage")</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+        <div class="contact__info text-center">
+            <div class="contact__item contact__hotline">
+                <a href="tel:@(!string.IsNullOrEmpty(home.GetPropertyValue<string>("hotline")) ? home.GetPropertyValue<string>("hotline").Replace(" ", "") : "")">@home.GetPropertyValue("hotline")</a>
+            </div>
+            <div class="contact__item contact__facebook">
+                <a href="@(!string.IsNullOrEmpty(home.GetPropertyValue<string>("facebook")) ? home.GetPropertyValue<string>("facebook") : "#")">facebook</a>
+            </div>
+        </div>
+        @if (lstItems.Count() >= 5)
+        {
+            <div class="loadmore__project text-center">
+                <a onclick="loadProject(this)" data-times="1">
+                    <p>Xem thêm</p>
+                    <i class="mysprite more"></i>
+                </a>
+            </div>
+        }
+    </div>
+    @Html.Partial("~/Views/Partials/_Contact.cshtml")
+    @Html.Partial("~/Views/Partials/Layout/_SocialMedia.cshtml")
+</div>
