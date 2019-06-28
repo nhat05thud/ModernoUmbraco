@@ -1,4 +1,4 @@
-﻿<div class="umb-editor umb-listview" ng-controller="Umbraco.PropertyEditors.ListViewController" ng-switch="isNew">
+<div class="umb-editor umb-listview" ng-controller="Umbraco.PropertyEditors.ListViewController" ng-switch="isNew">
 
    <div class="row-fluid" ng-switch-when="true">
 
@@ -28,8 +28,7 @@
                    <div class="btn-group" ng-show="listViewAllowedTypes.length === 1">
                        <a class="btn" href="#/{{entityType}}/{{entityType}}/edit/{{contentId}}?doctype={{listViewAllowedTypes[0].alias}}&create=true">
                            <i class="icon-{{listViewAllowedTypes[0].cssClass}}"></i>
-                           <!--<localize key="actions_create">Create</localize> {{ listViewAllowedTypes[0].name }}-->
-                           Thêm mới
+                           <localize key="actions_create">Create</localize> {{ listViewAllowedTypes[0].name }}
                        </a>
                    </div>
                </umb-editor-sub-header-section>

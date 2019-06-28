@@ -22,7 +22,7 @@ function loadProject(e) {
     var times = $this.attr("data-times");
     $.ajax({
         type: "GET",
-        url: "/umbraco/surface/project/loadmoreprojectarticle",
+        url: "/admin/surface/project/loadmoreprojectarticle",
         data: { times: parseInt(times) },
         success: function (result) {
             if (result) {
@@ -47,7 +47,7 @@ function loadProcedure(e) {
     var times = $this.attr("data-times");
     $.ajax({
         type: "GET",
-        url: "/umbraco/surface/procedure/loadmoreprocedurearticle",
+        url: "/admin/surface/procedure/loadmoreprocedurearticle",
         data: { times: parseInt(times) },
         success: function (result) {
             if (result) {

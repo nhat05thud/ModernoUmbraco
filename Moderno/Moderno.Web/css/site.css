@@ -955,6 +955,11 @@ header {
             text-transform: uppercase;
             margin: 0 0 15px;
         }
+@media screen and (max-width: 550px) {
+    .project__details .content h1 {
+        font-size: 7vw;
+    }
+}
 
         .project__details .content p.location,
         .project__details .content p.acreage {
@@ -1857,3 +1862,8 @@ footer {
         -webkit-filter: grayscale(0%);
         filter: none;
     }
+
+
+#umbracoPreviewBadge {
+    display: none !important;
+}

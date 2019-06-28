@@ -3,23 +3,42 @@
 @{
     var home = (IPublishedContent)CurrentPage.AncestorOrSelf(1);
     var recruitmentImage = Umbraco.TypedMedia(home.GetPropertyValue<int>("recruitmentImage"));
+    Html.EnableClientValidation(true);
+    Html.EnableUnobtrusiveJavaScript(true);
+    Html.EnableClientValidation(true);
+    Html.EnableUnobtrusiveJavaScript(true);
+    // Get the current page
+    //IPublishedContent objModel = Umbraco.TypedContent(UmbracoContext.Current.PageId);
+
+    // Tells the controller what page to add a comment under.
+    //Model.CultureLCID = System.Globalization.CultureInfo.CurrentUICulture.LCID;
+    //var langCode = System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
 }
-<div class="company__register">
-    <div class="company__register-image d-inline-block">
-        <div class="recruitment-image">
-            <picture>
-                <source srcset="@(recruitmentImage != null ? recruitmentImage.GetCropUrl(559, 490, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=559&height=490&bgcolor=fff&slimmage=true&rnd=" + home.UpdateDate.ToString("ddMMyyyhhmmss"))" media="(min-width: 1366px)">
-                <source srcset="@(recruitmentImage != null ? recruitmentImage.GetCropUrl(420, 490, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=420&height=490&bgcolor=fff&slimmage=true&rnd=" + home.UpdateDate.ToString("ddMMyyyhhmmss"))" media="(max-width: 1366px)">
-                <img class="img-full" src="@(recruitmentImage != null ? recruitmentImage.GetCropUrl(420, 490, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=420&height=490&bgcolor=fff&slimmage=true&rnd=" + home.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
-            </picture>
+@using (Ajax.BeginForm("HandleFormRecruitment", "Site", null, new AjaxOptions
+{
+    UpdateTargetId = "contentAjaxForm",
+    HttpMethod = "POST",
+    OnSuccess = "onSuccess",
+    OnFailure = "onFailure"
+}, new { @class = "FormSendMail" }))
+{
+    <div class="company__register">
+        <div class="company__register-image d-inline-block">
+            <div class="recruitment-image">
+                <picture>
+                    <source srcset="@(recruitmentImage != null ? recruitmentImage.GetCropUrl(620, 445, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=559&height=490&bgcolor=fff&slimmage=true&rnd=" + home.UpdateDate.ToString("ddMMyyyhhmmss"))" media="(min-width: 1366px)">
+                    <source srcset="@(recruitmentImage != null ? recruitmentImage.GetCropUrl(470, 445, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=420&height=490&bgcolor=fff&slimmage=true&rnd=" + home.UpdateDate.ToString("ddMMyyyhhmmss"))" media="(max-width: 1366px)">
+                    <img class="img-full" src="@(recruitmentImage != null ? recruitmentImage.GetCropUrl(470, 445, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=420&height=490&bgcolor=fff&slimmage=true&rnd=" + home.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
+                </picture>
+            </div>
+        </div>
+        <div class="company__register-form d-inline-block">
+            <h1>Đăng ký thông tin tuyển dụng</h1>
+            <p>Hãy trở hành một ngôi sao của vũ trụ Moderno team</p>
+            @Html.Partial("~/Views/Partials/Recruitment/_Recruitment.cshtml", new RecruitmentForm())
+        </div>
+        <div class="text-center">
+            <button type="submit">Đăng ký</button>
         </div>
     </div>
-    <div class="company__register-form d-inline-block">
-        <h1>Đăng ký thông tin tuyển dụng</h1>
-        <p>Hãy trở hành một ngôi sao của vũ trụ Moderno team</p>
-        @Html.Partial("~/Views/Partials/Recruitment/_Recruitment.cshtml", new RecruitmentForm())
-    </div>
-    <div class="text-center">
-        <button type="submit">Đăng ký</button>
-    </div>
-</div>
+}

@@ -11,12 +11,11 @@
         <div class="project__details-content content">
             <div class="w900 custom__width">
                 <h1>@current.Name</h1>
-                <p class="location"><b>@current.GetPropertyValue("location")</b></p>
-                <p class="acreage"><b>Diện tích: @current.GetPropertyValue("acreage")</b></p>
-                <p class="acreage"><b>Năm hoàn thành: @current.GetPropertyValue("yearComplete")</b></p>
+                <p class="location">@current.GetPropertyValue("location")</p>
+                <p class="acreage">Diện tích: @current.GetPropertyValue("acreage")</p>
+                <p class="acreage">Năm hoàn thành: @current.GetPropertyValue("yearComplete")</p>
                 <div class="wrap-content">
                     @current.GetPropertyValue("content")
-                    <p>Content</p>
                 </div>
             </div>
         </div>
@@ -24,7 +23,7 @@
     @{
         var lstMediaFirst = current.GetPropertyValue<IEnumerable<IPublishedContent>>("designImages");
     }
-    @if (lstMediaFirst.Any())
+    @if (lstMediaFirst != null && lstMediaFirst.Any())
     {
         var items = lstMediaFirst.ToList().Partition(5).ToList();
         <div class="project__images" id="list-image-first">
@@ -55,7 +54,7 @@
             }
         </div>
         <div class="contact__info text-center" style="padding: 0 0 15px;">
-            <div class="contact__item"><a href="@(!string.IsNullOrEmpty(current.GetPropertyValue<string>("realityVideo")) ? current.GetPropertyValue<string>("realityVideo") : "javascript:void(0)")" target="_blank">THỰC TẾ THI CÔNG</a></div>
+            <div class="contact__item"><a href="@(!string.IsNullOrEmpty(current.GetPropertyValue<string>("realityVideo")) ? current.GetPropertyValue<string>("realityVideo") : "javascript:void(0)")" target="_blank">VIDEO THỰC TẾ</a></div>
             <div class="contact__item contact__hotline">
                 <a href="tel:@(!string.IsNullOrEmpty(home.GetPropertyValue<string>("hotline")) ? home.GetPropertyValue<string>("hotline").Replace(" ", "") : "")">@home.GetPropertyValue("hotline")</a>
             </div>
@@ -73,7 +72,7 @@
     @{
         var lstMediaSecond = current.GetPropertyValue<IEnumerable<IPublishedContent>>("realityImages");
     }
-    @if (lstMediaSecond.Any())
+    @if (lstMediaSecond != null && lstMediaSecond.Any())
     {
         var items = lstMediaSecond.ToList().Partition(6).ToList();
         <div class="project__images" id="list-image-second">
