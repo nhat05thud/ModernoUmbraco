@@ -21,7 +21,7 @@ namespace Moderno.Web.Controllers
             if (procedureNode != null)
             {
                 var data = new ProcedureItems(Umbraco.TypedContent(procedureNode.Id), CultureInfo.CurrentUICulture);
-                var content = umbracoHelper.TypedContent(procedureNode.Id).Descendants("projectItems").OrderByDescending(x => x.CreateDate).Skip(times * items).Take(items).ToList();
+                var content = umbracoHelper.TypedContent(procedureNode.Id).Descendants("procedureItem").OrderByDescending(x => x.CreateDate).Skip(times * items).Take(items).ToList();
                 data.LstItems = content;
                 return PartialView("~/Views/Partials/Procedure/_ProcedureItem.cshtml", data);
             }

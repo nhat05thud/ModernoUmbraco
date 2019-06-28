@@ -12,11 +12,11 @@
             <a href="@item.Url">
                 @if (item.DocumentTypeAlias == "project")
                 {
-                    <img src="@(thumb != null ? thumb.GetCropUrl(392, 535, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=392&height=535&bgcolor=fff&slimmage=true&rnd=" + item.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
+                    <img src="@(thumb != null ? thumb.GetCropUrl(392, 535, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=392&height=535&bgcolor=fff&slimmage=true&rnd=" + item.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="@item.Name" />
                 }
                 else
                 {
-                    <img src="@(thumb != null ? thumb.GetCropUrl(345, 535, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=345&height=535&bgcolor=fff&slimmage=true&rnd=" + item.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
+                    <img src="@(thumb != null ? thumb.GetCropUrl(345, 535, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=345&height=535&bgcolor=fff&slimmage=true&rnd=" + item.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="@item.Name" />
                 }
                 <div class="circle">
                     <p>@item.Name</p>
@@ -32,7 +32,7 @@
         var videoLink = home.GetPropertyValue<string>("linkVideoOnline");
     }
     <div class="wrap__video-left">
-        <img src="@(videoImage != null ? videoImage.GetCropUrl(972, 450, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=972&height=450&bgcolor=fff&slimmage=true&rnd=" + home.UpdateDate.ToString("ddMMyyyhhmmss"))https://via.placeholder.com/972x450" alt=""/>
+        <img src="@(videoImage != null ? videoImage.GetCropUrl(972, 450, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=972&height=450&bgcolor=fff&slimmage=true&rnd=" + home.UpdateDate.ToString("ddMMyyyhhmmss"))" alt=""/>
         @if (videoFile != null)
         {
             <a data-fancybox href="#myVideo" data-source="@videoFile.Url" class="button-play" onclick="initVideo(this)"><i class="mysprite play"></i></a>

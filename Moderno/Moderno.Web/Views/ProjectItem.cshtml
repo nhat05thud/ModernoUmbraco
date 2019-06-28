@@ -1,5 +1,4 @@
 ﻿@using Moderno.Web.ClassHelpers
-@using Moderno.Web.Models
 @inherits UmbracoTemplatePage
 @{
     Layout = "Master.cshtml";
@@ -9,13 +8,16 @@
 
 <div class="wrap__project">
     <div class="project__details">
-        <div class="project__details-content">
-            <h1>@current.Name</h1>
-            <p class="location">@current.GetPropertyValue("location")</p>
-            <p class="acreage">Diện tích: @current.GetPropertyValue("acreage")</p>
-            <p class="acreage">Năm hoàn thành: @current.GetPropertyValue("yearComplete")</p>
-            <div class="wrap-content">
-                @current.GetPropertyValue("content")
+        <div class="project__details-content content">
+            <div class="w900 custom__width">
+                <h1>@current.Name</h1>
+                <p class="location"><b>@current.GetPropertyValue("location")</b></p>
+                <p class="acreage"><b>Diện tích: @current.GetPropertyValue("acreage")</b></p>
+                <p class="acreage"><b>Năm hoàn thành: @current.GetPropertyValue("yearComplete")</b></p>
+                <div class="wrap-content">
+                    @current.GetPropertyValue("content")
+                    <p>Content</p>
+                </div>
             </div>
         </div>
     </div>
@@ -28,24 +30,28 @@
         <div class="project__images" id="list-image-first">
             @foreach (var child in items)
             {
-            <div class="wrap__list-images">
-                @foreach (var item in child)
-                {
-                    var lstItem = new List<int> { 0, 1, 2 };
-                    <div class="hover__15">
-                        <a data-fancybox="gallery" href="@(item.Url)">
-                            @if (lstItem.Contains(child.IndexOf(item)))
-                            {
-                                <img class="lazyload" data-original="@(item.GetCropUrl(1140, 500, furtherOptions: "&slimmage=true"))" alt="" />
-                            }
-                            else
-                            {
-                                <img class="lazyload" data-original="@(item.GetCropUrl(555, 500, furtherOptions: "&slimmage=true"))" alt="" />
-                            }
-                        </a>
-                    </div>
-                }
-            </div>
+                <div class="wrap__list-images">
+                    @foreach (var item in child)
+                    {
+                        var lstItem = new List<int> { 0, 1, 2 };
+                        if (lstItem.Contains(child.IndexOf(item)))
+                        {
+                            <div class="item item-1 hover__15">
+                                <a data-fancybox="@(items.IndexOf(child) == 0 ? "gallery" : "")" href="@(item.Url)">
+                                    <img class="@(items.IndexOf(child) == 0 ? "lazyload" : "")" data-original="@(item.GetCropUrl(1140, 500, furtherOptions: "&slimmage=true"))" alt="@current.Name" />
+                                </a>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="item item-2 hover__15">
+                                <a data-fancybox="@(items.IndexOf(child) == 0 ? "gallery" : "")" href="@(item.Url)">
+                                    <img class="@(items.IndexOf(child) == 0 ? "lazyload" : "")" data-original="@(item.GetCropUrl(555, 500, furtherOptions: "&slimmage=true"))" alt="@current.Name" />
+                                </a>
+                            </div>
+                        }
+                    }
+                </div>
             }
         </div>
         <div class="contact__info text-center" style="padding: 0 0 15px;">
@@ -78,22 +84,30 @@
                 {
                     var lstItemFirst = new List<int> { 1, 2 };
                     var lstItemSecond = new List<int> { 3, 4, 5 };
-                    <div class="hover__15">
-                        <a data-fancybox="gallery" href="@(item.Url)">
-                            @if (lstItemFirst.Contains(child.IndexOf(item)))
-                            {
-                                <img class="lazyload" data-original="@(item.GetCropUrl(555, 500, furtherOptions: "&slimmage=true"))" alt="" />
-                            }
-                            else if (lstItemSecond.Contains(child.IndexOf(item)))
-                            {
-                                <img class="lazyload" data-original="@(item.GetCropUrl(360, 300, furtherOptions: "&slimmage=true"))" alt="" />
-                            }
-                            else
-                            {
-                                <img class="lazyload" data-original="@(item.GetCropUrl(1140, 500, furtherOptions: "&slimmage=true"))" alt="" />
-                            }
-                        </a>
-                    </div>
+                    if (lstItemFirst.Contains(child.IndexOf(item)))
+                    {
+                        <div class="item item-2 hover__15">
+                            <a data-fancybox="@(items.IndexOf(child) == 0 ? "gallery_1" : "")" href="@(item.Url)">
+                                <img class="@(items.IndexOf(child) == 0 ? "lazyload" : "")" data-original="@(item.GetCropUrl(555, 500, furtherOptions: "&slimmage=true"))" alt="@current.Name" />
+                            </a>
+                        </div>
+                    }
+                    else if (lstItemSecond.Contains(child.IndexOf(item)))
+                    {
+                        <div class="item item-3 hover__15">
+                            <a data-fancybox="@(items.IndexOf(child) == 0 ? "gallery_1" : "")" href="@(item.Url)">
+                                <img class="@(items.IndexOf(child) == 0 ? "lazyload" : "")" data-original="@(item.GetCropUrl(360, 300, furtherOptions: "&slimmage=true"))" alt="@current.Name" />
+                            </a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="item item-1 hover__15">
+                            <a data-fancybox="@(items.IndexOf(child) == 0 ? "gallery_1" : "")" href="@(item.Url)">
+                                <img class="@(items.IndexOf(child) == 0 ? "lazyload" : "")" data-original="@(item.GetCropUrl(1140, 500, furtherOptions: "&slimmage=true"))" alt="@current.Name" />
+                            </a>
+                        </div>
+                    }
                 }
             </div>
             }
@@ -108,7 +122,7 @@
             </div>
         }
     }
-    @Html.Partial("~/Views/Partials/Contact/_Contact.cshtml", new ContactForm())
+    @Html.Partial("~/Views/Partials/_Contact.cshtml")
     @Html.Partial("~/Views/Partials/Layout/_SocialMedia.cshtml")
 </div>
 

@@ -8,11 +8,11 @@
         <a href="@item.Url">
             @if (lstItem.Contains(Model.LstItems.IndexOf(item)))
             {
-                <img class="lazyload" data-original="@(thumb != null ? thumb.GetCropUrl(360, 325, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=360&height=325&bgcolor=fff&slimmage=true&rnd=" + item.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
+                <img src="@(thumb != null ? thumb.GetCropUrl(360, 325, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=360&height=325&bgcolor=fff&slimmage=true&rnd=" + item.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="@item.Name" />
             }
             else
             {
-                <img class="lazyload" data-original="@(thumb != null ? thumb.GetCropUrl(555, 500, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=555&height=500&bgcolor=fff&slimmage=true&rnd=" + item.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
+                <img src="@(thumb != null ? thumb.GetCropUrl(555, 500, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=555&height=500&bgcolor=fff&slimmage=true&rnd=" + item.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="@item.Name" />
             }
             <div class="content">
                 <h1>@item.Name</h1>

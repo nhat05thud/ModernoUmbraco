@@ -21,7 +21,7 @@ namespace Moderno.Web.Controllers
             if (projectNode != null)
             {
                 var data = new ProjectItems(Umbraco.TypedContent(projectNode.Id), CultureInfo.CurrentUICulture);
-                var content = umbracoHelper.TypedContent(projectNode.Id).Descendants("projectItems").OrderByDescending(x => x.CreateDate).Skip(times*items).Take(items).ToList();
+                var content = umbracoHelper.TypedContent(projectNode.Id).Descendants("projectItem").OrderByDescending(x => x.CreateDate).Skip(times*items).Take(items).ToList();
                 data.LstItems = content;
                 return PartialView("~/Views/Partials/Project/_ProjectItem.cshtml", data);
             }

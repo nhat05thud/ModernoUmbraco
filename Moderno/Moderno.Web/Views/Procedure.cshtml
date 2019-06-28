@@ -1,5 +1,4 @@
-﻿@using Moderno.Web.Models
-@inherits UmbracoTemplatePage
+﻿@inherits UmbracoTemplatePage
 @{
     Layout = "Master.cshtml";
     var current = (IPublishedContent) CurrentPage;
@@ -19,11 +18,11 @@
         <div class="procedure__steps-image">
             @if (desktopImage != null)
             {
-                <img class="img-full desktop-992" src="@(desktopImage.GetCropUrl(1160, 960, furtherOptions: "&slimmage=true"))" alt=""/>
+                <img class="img-full desktop-992" src="@(desktopImage.GetCropUrl(1160, 960, furtherOptions: "&slimmage=true"))" alt="Moderno"/>
             }
             @if (mobileImage != null)
             {
-                <img class="img-full ipadmo-992" src="@(mobileImage.Url)" alt=""/>
+                <img class="img-full ipadmo-992" src="@(mobileImage.Url)" alt="Moderno"/>
             }
         </div>
     </div>
@@ -36,7 +35,7 @@
             <div class="item hover__15">
                 <div class="img">
                     <a href="@item.Url">
-                        <img class="lazyload" data-original="@(thumb != null ? thumb.GetCropUrl(360, 250, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=360&height=250&bgcolor=fff&slimmage=true&rnd=" + item.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
+                        <img class="lazyload" data-original="@(thumb != null ? thumb.GetCropUrl(360, 250, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=360&height=250&bgcolor=fff&slimmage=true&rnd=" + item.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="@item.Name" />
                     </a>
                 </div>
                 <a href="@item.Url">@item.Name</a>
@@ -52,5 +51,5 @@
             </a>
         </div>
     }
-    @Html.Partial("~/Views/Partials/Contact/_Contact.cshtml", new ContactForm())
+    @Html.Partial("~/Views/Partials/_Contact.cshtml")
 </div>

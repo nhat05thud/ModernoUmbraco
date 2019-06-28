@@ -1,5 +1,4 @@
-﻿@using Moderno.Web.Models
-@inherits UmbracoTemplatePage
+﻿@inherits UmbracoTemplatePage
 @{
     Layout = "Master.cshtml";
     var home = (IPublishedContent)CurrentPage.AncestorOrSelf(1);
@@ -39,7 +38,7 @@
                             <div class="wrap-item">
                                 <div class="img">
                                     <a href="@item.Url">
-                                        <img class="lazyload" data-original="@(thumb != null ? thumb.GetCropUrl(105, 105, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=105&height=105&bgcolor=fff&slimmage=true&rnd=" + item.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
+                                        <img class="lazyload" data-original="@(thumb != null ? thumb.GetCropUrl(105, 105, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=105&height=105&bgcolor=fff&slimmage=true&rnd=" + item.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="@item.Name" />
                                     </a>
                                 </div>
                                 <div class="content">
@@ -56,5 +55,5 @@
             </div>
         </div>
     </div>
-    @Html.Partial("~/Views/Partials/Contact/_Contact.cshtml", new ContactForm())
+    @Html.Partial("~/Views/Partials/_Contact.cshtml")
 </div>

@@ -12,13 +12,13 @@
 <div class="wrap__company">
     <div class="company__team">
         <div class="companu__team_image">
-            <img class="img-full" src="@(introImage != null ? introImage.GetCropUrl(1040, 580, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=1040&height=580&bgcolor=fff&slimmage=true&rnd=" + current.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
+            <img class="img-full" src="@(introImage != null ? introImage.GetCropUrl(1040, 580, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=1040&height=580&bgcolor=fff&slimmage=true&rnd=" + current.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="Moderno" />
         </div>
     </div>
     @Html.Partial("~/Views/Partials/Layout/_SocialMedia.cshtml")
     <div class="company__team">
         <div class="companu__team_image">
-            <img class="img-full" src="@(companyImage != null ? companyImage.GetCropUrl(1040, 580, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=1040&height=580&bgcolor=fff&slimmage=true&rnd=" + current.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
+            <img class="img-full" src="@(companyImage != null ? companyImage.GetCropUrl(1040, 580, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=1040&height=580&bgcolor=fff&slimmage=true&rnd=" + current.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="@current.GetPropertyValue("companyTitle")" />
             <p>@current.GetPropertyValue("companyTitle")</p>
         </div>
     </div>
@@ -35,19 +35,19 @@
                         <a data-fancybox="gallery" href="@(thumb != null ? thumb.Url : "/images/no-image.png")" data-caption="@item.Name">
                             @if (child.IndexOf(item) == 1)
                             {
-                                <img class="lazyload" data-original="@(thumb != null ? thumb.GetCropUrl(529, 340, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=529&height=340&bgcolor=fff&slimmage=true&rnd=" + current.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
+                                <img class="lazyload" data-original="@(thumb != null ? thumb.GetCropUrl(529, 340, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=529&height=340&bgcolor=fff&slimmage=true&rnd=" + current.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="@item.Name" />
                             }
                             else if (child.IndexOf(item) == 3 || child.IndexOf(item) == 4)
                             {
-                                <img class="lazyload" data-original="@(thumb != null ? thumb.GetCropUrl(505, 340, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=505&height=340&bgcolor=fff&slimmage=true&rnd=" + current.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
+                                <img class="lazyload" data-original="@(thumb != null ? thumb.GetCropUrl(505, 340, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=505&height=340&bgcolor=fff&slimmage=true&rnd=" + current.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="@item.Name" />
                             }
                             else if (child.IndexOf(item) == 5)
                             {
-                                <img class="lazyload" data-original="@(thumb != null ? thumb.GetCropUrl(1040, 500, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=1040&height=500&bgcolor=fff&slimmage=true&rnd=" + current.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
+                                <img class="lazyload" data-original="@(thumb != null ? thumb.GetCropUrl(1040, 500, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=1040&height=500&bgcolor=fff&slimmage=true&rnd=" + current.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="@item.Name" />
                             }
                             else
                             {
-                                <img class="lazyload" data-original="@(thumb != null ? thumb.GetCropUrl(263, 340, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=263&height=340&bgcolor=fff&slimmage=true&rnd=" + current.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
+                                <img class="lazyload" data-original="@(thumb != null ? thumb.GetCropUrl(263, 340, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=263&height=340&bgcolor=fff&slimmage=true&rnd=" + current.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="@item.Name" />
                             }
                         </a>
                     </div>
