@@ -1856,8 +1856,8 @@ footer {
 }
     .wrap__categories .item a:hover img,
     .companu__team_image img:hover,
-    .project__category .item a:hover img,
-	.company__team_trip-grid .item a:hover img {
+    .project__category .item .wrap-item:hover img,
+    .company__team_trip-grid .item a:hover img {
         filter: grayscale(0%);
         -webkit-filter: grayscale(0%);
         filter: none;
