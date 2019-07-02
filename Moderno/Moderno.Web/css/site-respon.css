@@ -7,7 +7,7 @@
 
 @media screen and (max-width: 1366px){
     .wrap__categories .item .circle p {
-        font-size: 24px;
+        font-size: 44px; /*24px*/
     }
 }
 @media screen and (max-width: 1199px){
@@ -43,15 +43,15 @@
     .menu-mo {
         text-align: left;
         line-height: 30px;
-        color: #231f20;
+        color: #fff;
         float: right;
     }
         .menu-mo:hover {
-            color: #231f20;
+            color: #fff;
         }
         .menu-mo span {
             line-height: 30px;
-            color: #231f20;
+            color: #fff;
         }
     .menu-mobile .logo {
     }
@@ -138,7 +138,9 @@
     .procedure__steps .procedure__steps-title:after {
         right: calc(100% + 10px);
     }
-
+    .procedure__steps {
+        margin-top: 15px;
+    }
     .procedure__steps .procedure__steps-title h1:before, .procedure__steps .procedure__steps-title h1:after {
         display: none;
     }
@@ -209,23 +211,29 @@
         top: 0;
     }
         .procedure__steps .procedure__steps-title h1 {
-            font-size: 14px;
-            line-height: initial;
+            font-size: 18px;
+            line-height: 24px;
         }
         .procedure__steps .procedure__steps-image {
             border: 0;
         }
+    .wrap__company .main__follow {
+        padding: 45px 0;
+    }
 }
 @media screen and (max-width: 550px){
     header {
-        padding: 15px 0;
+        padding: 0;
     }
-    header .left__header {
-        display: block;
-        margin: 0 auto;
-        max-width: 100%;
-        text-align: center;
-    }
+        header .top-head {
+            padding: 15px 0;
+        }
+        header .left__header {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            text-align: center;
+        }
         header .left__header a {
             padding-right: 0;
             padding-bottom: 10px;
@@ -233,22 +241,32 @@
         header .left__header span {
             display: block;
             text-align: center;
-            border-top: 1px solid #231f20;
             border-left: 0;
             padding-left: 0;
             width: 165px;
             margin: 0 auto 15px;
         }
-        header .right__header {
-            width: 100%;
-            display: block;
-        }
+            header .left__header span:before {
+                display: none;
+            }
+            header .right__header {
+                width: 100%;
+                display: block;
+            }
         header .right__header nav {
             float: left;
         }
-    #btn__play-audio {
+    /*#btn__play-audio {
         bottom: auto;
         top: 15px;
+    }*/
+    #btn__play-audio {
+        bottom: auto;
+        top: 10px;
+        background: #fff;
+        padding: 7px;
+        border-radius: 8px;
+        right: 10px;
     }
     .wrap__categories {
         margin: 15px -15px 30px;

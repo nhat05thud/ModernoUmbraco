@@ -9,7 +9,7 @@
 }
 
 body {
-    font-family: 'UTMAvo';
+    font-family: 'iCielSimplifica';
     font-size: 14px;
     color: #363636;
     overflow: hidden;
@@ -156,13 +156,16 @@ p {
 /*========================header=================*/
 header {
     font-size: 0;
-    padding: 40px 0;
     position: relative;
     z-index: 10;
+    padding-bottom: 40px;
 }
-
+    header .top-head {
+        padding: 25px 15px;
+        background: #000;
+    }
     header .left__header {
-        width: 325px;
+        width: 335px;
     }
 
         header .left__header a {
@@ -175,17 +178,31 @@ header {
             }
 
         header .left__header span {
-            font-size: 14px;
+            font-size: 28px; /*14px*/
             width: calc(100% - 165px);
             padding-left: 15px;
-            border-left: 1px solid #231f20;
-            color: #231f20;
+            position: relative;
+            color: #fff;
             text-transform: uppercase;
             line-height: 30px;
+            letter-spacing: 3px;
+            padding-top: 4px;
+        }
+        header .left__header span:before {
+            position: absolute;
+            content: "";
+            background: #fff;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            left: -4px;
         }
 
     header .right__header {
-        width: calc(100% - 325px);
+        width: calc(100% - 335px);
 		overflow: hidden;
     }
 
@@ -195,7 +212,7 @@ header {
         }
 
 
-            header .right__header nav:before {
+            /*header .right__header nav:before {
                 position: absolute;
                 content: "";
                 background: #231f20;
@@ -205,12 +222,11 @@ header {
                 bottom: 0;
                 margin: auto;
                 right: calc(100% - 10px);
-            }
+            }*/
             @media screen and (min-width: 1366px) {
-                header .right__header nav:before {
+                /*header .right__header nav:before {
                     width: 100%;
-                }
-
+                }*/
             }
             header .right__header nav #menu > li {
                 display: inline-block;
@@ -220,7 +236,7 @@ header {
                 header .right__header nav #menu > li:before {
                     position: absolute;
                     content: "";
-                    background: #231f20;
+                    background: #fff;
                     width: 8px;
                     height: 8px;
                     border-radius: 50%;
@@ -231,12 +247,13 @@ header {
                 }
 
                 header .right__header nav #menu > li > a {
-                    font-size: 14px;
-                    color: #231f20;
+                    font-size: 24px; /*14px*/
+                    color: #fff;
                     text-transform: uppercase;
                     display: block;
-                    padding: 0 35px;
+                    padding: 5px 35px 0; /*0 35px*/
                     line-height: 30px;
+                    letter-spacing: 4px;
                 }
 
                 header .right__header nav #menu > li.active > a,
@@ -248,13 +265,14 @@ header {
             padding-left: 32px;
             background-image: url(/images/mysprite.sprite.png);
             background-repeat: no-repeat;
-            background-position: -10px -73px;
+            background-position: -10px -106px;
         }
 
             header .right__header .hotline a {
-                font-size: 14px;
-                color: #231f20;
+                font-size: 24px; /*14px*/
+                color: #fff;
                 line-height: 30px;
+                letter-spacing: 3px;
             }
                 header .right__header .hotline a:hover {
                     color: #fabc2b;
@@ -262,16 +280,17 @@ header {
 
 #btn__play-audio {
     position: absolute;
-    bottom: 5px;
+    bottom: 10px;
     right: 0;
     cursor: pointer;
     z-index: 2;
 }
 /**/
 #main-content {
-    max-width: 1600px;
+    max-width: 1630px;
     margin: 0 auto;
     width: 100%;
+    padding: 0 15px;
 }
 .wrap__categories {
     font-size: 0;
@@ -331,6 +350,10 @@ header {
                 -ms-transform: translateY(-50%);
                 -o-transform: translateY(-50%);
                 transform: translateY(-50%);
+                
+                font-weight: bold;
+                letter-spacing: 3px;
+                padding-top: 10px;
             }
 
         .wrap__categories .item a:hover .circle {
@@ -479,12 +502,14 @@ header {
         background: #000;
         padding: 30px;
         color: #fabc2e;
-        font-size: 38px;
+        font-size: 72px; /*38px*/
         position: relative;
         top: -50px;
         display: inline-block;
         right: -50px;
         text-transform: uppercase;
+
+        letter-spacing: 5px;
     }
 
 .company__team_trip-grid {
@@ -535,12 +560,12 @@ header {
     width: 40%;
 }
     .company__register .company__register-image .contact-image {
-        height: 540px;
+        height: 575px; /*540px*/
         position: relative;
         overflow: hidden;
     }
     .company__register .company__register-image .recruitment-image {
-        height: 450px;
+        height: 485px; /*450px*/
         position: relative;
         overflow: hidden;
     }
@@ -568,29 +593,32 @@ header {
         .company__register .company__register-form h1 {
             text-transform: uppercase;
             font-weight: normal;
-            font-size: 24px;
+            font-size: 44px; /*24px*/
             margin: 0;
             padding-bottom: 10px;
             margin-bottom: 10px;
             border-bottom: 4px solid #161617;
+            letter-spacing: 3px;
         }
 
-        .company__register .company__register-form > p {
-            text-transform: uppercase;
-            font-size: 18px;
-            margin-bottom: 40px;
-        }
+.company__register .company__register-form > p {
+    text-transform: uppercase;
+    font-size: 32px; /*18px*/
+    margin-bottom: 40px;
+    letter-spacing: 3px;
+}
 
-    .company__register button {
-        font-size: 18px;
-        background: #fbfbfb;
-        border: 2px solid #161617;
-        padding: 15px 50px;
-        text-transform: uppercase;
-        margin: 30px 0;
-        cursor: pointer;
-        transition: all 0.5s ease;
-    }
+.company__register button {
+    font-size: 38px; /*18px*/
+    background: #fbfbfb;
+    border: 2px solid #161617;
+    padding: 15px 50px 6px; /*15px 50px*/
+    text-transform: uppercase;
+    margin: 30px 0;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    letter-spacing: 5px;
+}
 
         .company__register button:hover {
             background: #161617;
@@ -611,14 +639,15 @@ header {
 
     .form__input .label {
         position: absolute;
-        top: 17px;
+        top: 10px; /*17px*/
         left: 0;
-        font-size: 18px;
+        font-size: 24px; /*18px*/
         color: #161617;
         font-weight: 500;
         transform-origin: 0 0;
         transition: all 0.2s ease;
         text-transform: uppercase;
+        letter-spacing: 3px;
     }
 
     .form__input .border {
@@ -643,13 +672,14 @@ header {
         border: 0;
         font-family: inherit;
         height: 100%;
-        font-size: 18px;
+        font-size: 24px; /*18px*/
         font-weight: 500;
         border-bottom: 2px solid #161617;
         background: none;
         border-radius: 0;
         color: #161617;
         transition: all 0.15s ease;
+        letter-spacing: 3px;
     }
 
         .form__input input:not(:placeholder-shown) + span {
@@ -716,7 +746,7 @@ header {
         .company__info .company__info-address ul li > .text {
             width: calc(100% - 30px);
             padding-left: 20px;
-            font-size: 16px;
+            font-size: 28px; /*16px*/
             line-height: initial;
         }
 
@@ -764,7 +794,7 @@ header {
             width: 100%;
         }
 
-        .project__category .item > a {
+        .project__category .item > .wrap-item {
             position: relative;
         }
 
@@ -783,28 +813,34 @@ header {
         }
 
             .project__category .item .content h1 {
-                font-size: 22px;
+                font-size: 28px; /*22px*/
                 font-weight: normal;
                 margin: 0 0 5px;
+                letter-spacing: 3px;
+                color: #fabc2e;
             }
 
             .project__category .item .content .desc {
-                font-size: 12px;
+                font-size: 18px; /*12px*/
+                letter-spacing: 3px;
+                color: #fabc2e;
             }
 
-        .project__category .item > a:hover .content {
+        .project__category .item > .wrap-item:hover .content {
             opacity: 1;
+        }
+        .project__category .item > .wrap-item .content h1:hover {
+            text-decoration: underline;
         }
 .contact__info {
     padding: 30px 0;
 }
 .contact__info .contact__item {
     border: 1px solid #161617;
-    border-radius: 15px;
+    border-radius: 20px;
     display: inline-block;
     vertical-align: top;
     margin: 0 5px;
-    width: 155px;
     transition: all 0.5s ease;
     line-height: initial;
     background: #161617;
@@ -812,8 +848,10 @@ header {
 
     .contact__info .contact__item a {
         color: #fff;
-        padding: 6px 10px;
+        padding: 7px 10px 4px; /*6px 10px*/
         display: block;
+        font-size: 24px;
+        letter-spacing: 2px;
     }
 
 .contact__info .contact__hotline:hover {
@@ -822,6 +860,7 @@ header {
 
     .contact__info .contact__hotline:hover a {
         color: #fff;
+        background: url("/images/hotline2.png") no-repeat 10px center;
     }
 
 .contact__info .contact__hotline {
@@ -834,29 +873,32 @@ header {
 
     .contact__info .contact__facebook:hover a {
         color: #161617;
+        background: url("/images/hotline.png") no-repeat 10px center;
     }
 
 .contact__info .contact__hotline a,
 .contact__info .contact__facebook a {
-    padding: 5px 10px 5px 30px;
-    font-size: 16px;
-    background-image: url(/images/mysprite.sprite.png);
+    padding: 6px 10px 6px 45px;
+    font-size: 24px; /*16px*/
     background-repeat: no-repeat;
     color: #161617;
     min-height: 32px;
+    letter-spacing: 2px;
 }
 
-.contact__info .contact__hotline a {
-    background-position: -5px -73px;
-}
+    .contact__info .contact__hotline a {
+        padding-top: 9px;
+        background: url("/images/hotline.png") no-repeat 10px center;
+    }
 
-.contact__info .contact__facebook a {
-    background-position: 3px -340px;
-    font-weight: bold;
-    color: #fabc2e;
-    position: relative;
-    top: -2px;
-}
+    .contact__info .contact__facebook a {
+        font-weight: bold;
+        color: #fabc2e;
+        position: relative;
+        background: url("/images/hotline2.png") no-repeat 10px center;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
 
 .loadmore__project {
     margin: 30px 0;
@@ -881,12 +923,14 @@ header {
 
         .loadmore__project > a p {
             border: 1px solid #161a21;
-            padding: 7px 15px;
+            padding: 9px 15px 4px 20px; /*7px 15px*/
             color: #161a21;
             text-transform: uppercase;
-            border-radius: 15px;
+            border-radius: 25px; /*15px*/
             opacity: 0;
             transition: all .5s ease;
+            font-size: 24px;
+            letter-spacing: 5px;
         }
 
         .loadmore__project > a:hover p {
@@ -943,7 +987,7 @@ header {
     }
     .project__details .project__details-content.content {
         width: 100%;
-        font-size: 14px;
+        font-size: 24px;
     }
     .project__details .project__details-content.content .wrap-content {
         margin-top: 30px;
@@ -954,6 +998,7 @@ header {
             font-weight: normal;
             text-transform: uppercase;
             margin: 0 0 15px;
+            letter-spacing: 3px;
         }
 @media screen and (max-width: 550px) {
     .project__details .content h1 {
@@ -1090,7 +1135,7 @@ header {
         display: inline-block;
         background: #111011;
         padding: 10px 30px;
-        border-radius: 25px;
+        border-radius: 30px; /*25px*/
         position: relative;
         top: 20px;
     }
@@ -1120,8 +1165,10 @@ header {
             text-transform: uppercase;
             font-weight: normal;
             margin: 0;
-            font-size: 18px;
+            font-size: 32px; /*18px*/
             position: relative;
+            letter-spacing: 5px;
+            padding: 5px 0 0;
         }
 
             .procedure__steps .procedure__steps-title h1:before,
@@ -1160,7 +1207,7 @@ header {
         width: 27px;
         height: 32px;
         background: url("/images/mysprite.sprite.png");
-        background-position: -10px -427px;
+        background-position: -10px -458px;
         position: absolute;
         top: 0;
         bottom: 0;
@@ -1209,11 +1256,12 @@ header {
 
         .procedure__news .item a {
             text-transform: uppercase;
-            margin-top: 5px;
             display: block;
             color: #111011;
-            line-height: initial;
+            line-height: 30px;
             transition: all .2s ease;
+            font-size: 24px;
+            letter-spacing: 3px;
         }
 
             .procedure__news .item a:hover {
@@ -1235,14 +1283,16 @@ header {
     }
 
         .procedure__content_wrapper .procedure__content-left h1 {
-            font-size: 24px;
+            font-size: 32px;
             font-weight: bold;
             text-transform: uppercase;
             margin: 0 0 20px;
+            letter-spacing: 3px;
         }
 
         .procedure__content_wrapper .procedure__content-left .wrap-content {
-            font-size: 16px;
+            font-size: 24px;
+            letter-spacing: 2px;
         }
 
     .procedure__content_wrapper .procedure__content-right {
@@ -1251,11 +1301,12 @@ header {
     }
 
         .procedure__content_wrapper .procedure__content-right .project__aside > h1 {
-            font-size: 18px;
+            font-size: 28px;
             text-transform: uppercase;
             text-align: center;
             border: 1px solid #111011;
-            padding: 10px 15px;
+            padding: 12px 15px 5px; /*10px 15px*/
+            letter-spacing: 3px;
         }
 
 .project__aside .project_cate .item {
@@ -1285,7 +1336,8 @@ header {
 
     .project__aside .project_cate .item .content {
         width: calc(100% - 105px);
-        font-size: 14px;
+        font-size: 16px;
+        letter-spacing: 2px;
     }
 
         .project__aside .project_cate .item .content > a {
@@ -1294,6 +1346,8 @@ header {
             display: block;
             margin-bottom: 5px;
             color: #363636;
+            font-size: 20px;
+            letter-spacing: 2px;
         }
 
             .project__aside .project_cate .item .content > a:hover {
@@ -1518,13 +1572,14 @@ footer {
             background-color: #231f20;
             color: #fff;
             display: block;
-            font-size: 15px;
+            font-size: 22px; /*15px*/
             font-weight: 700;
             line-height: 24px;
-            padding: 7px 25px 7px 10px;
+            padding: 12px 25px 7px 10px; /*7px 25px 7px 10px*/
             text-transform: uppercase;
             position: relative;
             border-bottom: 1px solid #fff;
+            letter-spacing: 3px;
         }
 
     .menu-nav .iconar {
@@ -1736,10 +1791,11 @@ footer {
 .page-loading .loading__wrap > h1 {
     margin: 0;
     font-weight: normal;
-    font-size: 38px;
+    font-size: 56px; /*38px*/
     text-transform: uppercase;
     -webkit-animation: blink-animation 1.5s ease-in-out;
     animation: blink-animation 1.5s ease-in-out;
+    letter-spacing: 5px;
 }
 /**/
 .hover__14 figure {
@@ -1827,9 +1883,11 @@ footer {
     }
 }
 
-.field-validation-error span{
+.field-validation-error span {
     color: red !important;
-    font-size:12px;
+    font-size: 18px; /*12px*/
+    display: block;
+    padding: 5px 0;
 }
 .loading_div {
     position: fixed !important;
@@ -1866,4 +1924,7 @@ footer {
 
 #umbracoPreviewBadge {
     display: none !important;
+}
+.fancybox-caption__body {
+    font-size: 28px;
 }

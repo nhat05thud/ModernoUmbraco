@@ -118,14 +118,14 @@ $("#btn__play-audio").click(function () {
     var audio = $("#audio__player");
     if (audio.length > 0) {
         if (audio[0].paused) {
-            $(this).removeClass("mysprite speaker-mute");
-            $(this).addClass("mysprite speaker");
+            $(this).children("i").removeClass("mysprite speaker-mute");
+            $(this).children("i").addClass("mysprite speaker");
             audio[0].play();
             audio[0].muted = false;
             audio[0].loop = true;
         } else {
-            $(this).removeClass("mysprite speaker");
-            $(this).addClass("mysprite speaker-mute");
+            $(this).children("i").removeClass("mysprite speaker");
+            $(this).children("i").addClass("mysprite speaker-mute");
             audio[0].pause();
         }
     }

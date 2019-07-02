@@ -2,9 +2,9 @@
 This is an example of how to use the image sprite in your own CSS files
 */
 .mysprite {
-    background-image: url('/images/mysprite.sprite.png');
-    background-repeat: no-repeat;
-    display: inline-block;
+	background-image: url('/images/mysprite.sprite.png');
+	background-repeat: no-repeat;
+	display: inline-block;
 }
 .mysprite.speaker {
 	width: 24px;
@@ -21,43 +21,48 @@ This is an example of how to use the image sprite in your own CSS files
 	height: 21px;
 	background-position: -10px -78px;
 }
+.mysprite.hotline2 {
+	width: 21px;
+	height: 21px;
+	background-position: -10px -109px;
+}
 .mysprite.play {
 	width: 60px;
 	height: 69px;
-	background-position: -10px -109px;
+	background-position: -10px -140px;
 }
 .mysprite.ct-address {
 	width: 30px;
 	height: 30px;
-	background-position: -10px -188px;
+	background-position: -10px -219px;
 }
 .mysprite.ct-mail {
 	width: 30px;
 	height: 29px;
-	background-position: -10px -228px;
+	background-position: -10px -259px;
 }
 .mysprite.ct-openclose {
 	width: 30px;
 	height: 30px;
-	background-position: -10px -267px;
+	background-position: -10px -298px;
 }
 .mysprite.ct-phone {
 	width: 30px;
 	height: 30px;
-	background-position: -10px -307px;
+	background-position: -10px -338px;
 }
 .mysprite.ct-fb {
 	width: 21px;
 	height: 21px;
-	background-position: -10px -347px;
+	background-position: -10px -378px;
 }
 .mysprite.more {
 	width: 35px;
 	height: 39px;
-	background-position: -10px -378px;
+	background-position: -10px -409px;
 }
 .mysprite.arr_prev {
 	width: 27px;
 	height: 32px;
-	background-position: -10px -427px;
+	background-position: -10px -458px;
 }

@@ -19,13 +19,11 @@
 @Html.Partial("~/Views/Partials/Layout/_PageLoading.cshtml")
     <div id="wrapper">
         <div id="wrapper-in">
-            <div style="padding: 0 15px;">
-                @Html.Partial("~/Views/Partials/Layout/_Header.cshtml")
-                <div id="main-content">
-                    @RenderBody()
-                </div>
-                <footer></footer>
+            @Html.Partial("~/Views/Partials/Layout/_Header.cshtml")
+            <div id="main-content">
+                @RenderBody()
             </div>
+            <footer></footer>
         </div>
         @Html.Partial("~/Views/Partials/Layout/_Audio.cshtml")
     </div>

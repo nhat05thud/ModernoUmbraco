@@ -304,6 +304,7 @@
     <Content Include="css\slick.css" />
     <Content Include="default.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\font-web\iCielSimplifica\iCielSimplifica.svg" />
     <Content Include="fonts\font-web\UTMAvo\UTMAvo.svg" />
     <Content Include="fonts\font-web\UTMAvo\UTMAvoBold.svg" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -345,6 +346,10 @@
     <Content Include="images\speaker.png" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="fonts\font-web\iCielSimplifica\iCielSimplifica.eot" />
+    <Content Include="fonts\font-web\iCielSimplifica\iCielSimplifica.ttf" />
+    <Content Include="fonts\font-web\iCielSimplifica\iCielSimplifica.woff" />
+    <Content Include="fonts\font-web\iCielSimplifica\iCielSimplifica.woff2" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
