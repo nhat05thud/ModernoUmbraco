@@ -294,7 +294,7 @@ header {
 }
 .wrap__categories {
     font-size: 0;
-    margin: 50px -15px 30px;
+    margin: 10px -15px 30px;
 }
 
     .wrap__categories .item {
@@ -460,7 +460,7 @@ header {
 }
 /**/
 .wrap__company {
-    padding: 50px 0;
+    padding: 10px 0 50px;
 }
 
 .company__quote {
@@ -767,7 +767,7 @@ header {
         }
 /**/
 .wrap__project {
-    padding: 50px 0;
+    padding: 10px 0 50px;
 }
 
 .project__category {
@@ -1100,7 +1100,7 @@ header {
     }
 /**/
 .wrap__procedure {
-    padding: 30px 0;
+    padding: 10px 0 30px;
 }
 
 .procedure__banner .owl-dots {
