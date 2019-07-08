@@ -1904,7 +1904,11 @@ footer {
 }
 /**/
 
-.wrap__categories .item img, .companu__team_image img, .project__category .item img,.company__team_trip-grid .item img {
+.wrap__categories .item img, 
+.companu__team_image img, 
+.project__category .item img, 
+.company__team_trip-grid .item img, 
+.partner__carousel .item img {
     width: 100%;
     filter: grayscale(100%);
     -webkit-filter: grayscale(100%);
@@ -1915,7 +1919,8 @@ footer {
     .wrap__categories .item a:hover img,
     .companu__team_image img:hover,
     .project__category .item .wrap-item:hover img,
-    .company__team_trip-grid .item a:hover img {
+    .company__team_trip-grid .item a:hover img,
+    .partner__carousel .item a:hover img {
         filter: grayscale(0%);
         -webkit-filter: grayscale(0%);
         filter: none;
@@ -1927,4 +1932,17 @@ footer {
 }
 .fancybox-caption__body {
     font-size: 28px;
+}
+.wrap-iframe-video {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+}
+.wrap-iframe-video > iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }

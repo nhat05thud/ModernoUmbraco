@@ -347,6 +347,7 @@
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="fonts\font-web\iCielSimplifica\iCielSimplifica.eot" />
+    <Content Include="fonts\font-web\iCielSimplifica\iCielSimplifica.otf" />
     <Content Include="fonts\font-web\iCielSimplifica\iCielSimplifica.ttf" />
     <Content Include="fonts\font-web\iCielSimplifica\iCielSimplifica.woff" />
     <Content Include="fonts\font-web\iCielSimplifica\iCielSimplifica.woff2" />
