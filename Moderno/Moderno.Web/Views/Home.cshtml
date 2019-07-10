@@ -36,7 +36,7 @@
         @*<img src="@(videoImage != null ? videoImage.GetCropUrl(972, 450, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=972&height=450&bgcolor=fff&slimmage=true&rnd=" + home.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />*@
         @if (videoFile != null)
         {
-            <video id="myVideo" controls muted autoplay style="width: 100%;">
+            <video id="myVideo" controls muted autoplay playsinline style="width: 100%;">
                 <source src="@videoFile.Url" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
