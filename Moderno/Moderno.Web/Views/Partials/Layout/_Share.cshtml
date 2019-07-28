@@ -4,7 +4,7 @@
 <meta name="description" content="@CurrentPage.GetPropertyValue("metaDescription")" />
 <meta property="og:description" itemprop="description" content="@CurrentPage.GetPropertyValue("metaDescription")" />
 <meta property="og:url" itemprop="url" content="@Request.Url" />
-<meta property="og:title" itemprop="headline" content="@CurrentPage.GetPropertyValue("metaTitle")" />
+<meta property="og:title" itemprop="headline" content="@(!string.IsNullOrEmpty(CurrentPage.GetPropertyValue<string>("metaTitle")) ? CurrentPage.GetPropertyValue("metaTitle") : CurrentPage.Name)" />
 <meta property="og:type" content="article" />
 @{
     var image = Umbraco.TypedMedia(CurrentPage.GetPropertyValue<int>("image"));
