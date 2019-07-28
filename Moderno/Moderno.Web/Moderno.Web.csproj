@@ -307,6 +307,7 @@
     <Content Include="fonts\font-web\iCielSimplifica\iCielSimplifica.svg" />
     <Content Include="fonts\font-web\UTMAvo\UTMAvo.svg" />
     <Content Include="fonts\font-web\UTMAvo\UTMAvoBold.svg" />
+    <Content Include="fonts\font-web\UVFBrawls\UVFBrawls-Regular.svg" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -351,6 +352,11 @@
     <Content Include="fonts\font-web\iCielSimplifica\iCielSimplifica.ttf" />
     <Content Include="fonts\font-web\iCielSimplifica\iCielSimplifica.woff" />
     <Content Include="fonts\font-web\iCielSimplifica\iCielSimplifica.woff2" />
+    <Content Include="fonts\font-web\UVFBrawls\UVFBrawls-Regular.eot" />
+    <Content Include="fonts\font-web\UVFBrawls\UVFBrawls-Regular.otf" />
+    <Content Include="fonts\font-web\UVFBrawls\UVFBrawls-Regular.ttf" />
+    <Content Include="fonts\font-web\UVFBrawls\UVFBrawls-Regular.woff" />
+    <Content Include="fonts\font-web\UVFBrawls\UVFBrawls-Regular.woff2" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
@@ -388,6 +394,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassHelpers\SendMail.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Models\BlogItems.cs" />
     <Compile Include="TemplateEngine\DotLiquidTemplate.cs" />
     <Compile Include="TemplateEngine\ITextTemplate.cs" />
     <Content Include="App_Code\Bootstrapper.cs" />
@@ -472,6 +480,9 @@
     <Content Include="Views\Partials\Layout\_SocialMedia.cshtml" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\PageNotFound.cshtml" />
+    <Content Include="Views\Blog.cshtml" />
+    <Content Include="Views\BlogItem.cshtml" />
+    <Content Include="Views\Partials\Blog\_BlogItem.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

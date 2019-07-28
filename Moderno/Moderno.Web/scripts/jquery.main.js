@@ -27,7 +27,6 @@ function loadProject(e) {
         success: function (result) {
             if (result) {
                 if (result.trim() !== "") {
-                    console.log("bbb");
                     $(".project__category .list-item").append(result);
                     $this.attr("data-times", parseInt(times) + 1);
                 } else {
@@ -53,6 +52,30 @@ function loadProcedure(e) {
             if (result) {
                 if (result.trim() !== "") {
                     $(".procedure__news").append(result);
+                    $this.attr("data-times", parseInt(times) + 1);
+                } else {
+                    $(".loadmore__project").remove();
+                }
+            } else {
+                $(".loadmore__project").remove();
+            }
+            $("body > .loading_div").remove();
+        }
+    });
+}
+function loadBlog(e) {
+    $("body").append("<div class='loading_div'></div>");
+    $("body > .loading_div").css("display", "block");
+    var $this = $(e);
+    var times = $this.attr("data-times");
+    $.ajax({
+        type: "GET",
+        url: "/admin/surface/blog/loadmoreblogitem",
+        data: { times: parseInt(times) },
+        success: function (result) {
+            if (result) {
+                if (result.trim() !== "") {
+                    $(".blog__category .list-item").append(result);
                     $this.attr("data-times", parseInt(times) + 1);
                 } else {
                     $(".loadmore__project").remove();
@@ -186,6 +209,53 @@ function initOwlCarousel() {
                 items: 4
             }
         }
+    });
+    var mainImg = $(".main-img-carousel").owlCarousel({
+        items: 1,
+        loop: false,
+        nav: true,
+        dots: false,
+        autoplay: true,
+        autoplayTimeout: 7000,
+        autoplayHoverPause: true,
+        onChanged: function (e) {
+            $(".thumb-img-carousel .owl-item").removeClass("itemActive");
+            $(".thumb-img-carousel .owl-item").eq(e.item.index).addClass("itemActive");
+        }
+    });
+    $(".thumb-img-carousel").owlCarousel({
+        margin: 20,
+        loop: false,
+        nav: true,
+        dots: false,
+        autoplay: false,
+        autoplayTimeout: 7000,
+        autoplayHoverPause: true,
+        onInitialized: function () {
+            $(".thumb-img-carousel .owl-item").first().addClass("itemActive");
+        },
+        responsive: {
+            0: {
+                items: 3
+            },
+            480: {
+                items: 4
+            },
+            600: {
+                items: 6
+            },
+            1000: {
+                items: 8
+            },
+            1200: {
+                items: 10
+            }
+        }
+    }).find(".owl-item").click(function () {
+        $(".thumb-img-carousel .owl-item").removeClass("itemActive");
+        $(this).addClass("itemActive");
+        var n = $(this).index();
+        mainImg.trigger("to.owl.carousel", n);
     });
 }
 function malihuScroll() {

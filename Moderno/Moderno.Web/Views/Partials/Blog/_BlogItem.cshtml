@@ -1,0 +1,25 @@
+﻿@inherits UmbracoViewPage<Moderno.Web.Models.BlogItems>
+
+@foreach (var item in Model.LstItems)
+{
+    var thumb = Umbraco.TypedMedia(item.GetPropertyValue<int>("image"));
+    <div class="item @(Model.LstItems.IndexOf(item) == 0 ? "item-1" : "item-2")">
+        <div class="wrap-item">
+            @if (Model.LstItems.IndexOf(item) == 0)
+            {
+                <img src="@(thumb != null ? thumb.GetCropUrl(1600, 645, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=1600&height=645&bgcolor=fff&slimmage=true&rnd=" + item.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="@item.Name" />
+            }
+            else
+            {
+                <img src="@(thumb != null ? thumb.GetCropUrl(360, 325, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=360&height=325&bgcolor=fff&slimmage=true&rnd=" + item.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="@item.Name" />
+            }
+            <div class="content">
+                <a href="@item.Url">
+                    <p class="date">@(item.CreateDate.ToString("dd.MM.yyyy"))</p>
+                    <h1>@item.Name</h1>
+                    <p class="hashtag text-right">@item.GetPropertyValue("hashTag")</p>
+                </a>
+            </div>
+        </div>
+    </div>
+}
