@@ -15,6 +15,13 @@
         width: 75px;
         right: calc(100% - 15px);
     }
+    header .right__header nav #menu > li > a {
+        font-size: 20px;
+        padding: 5px 25px 0;
+    }
+    header .right__header nav #menu > li:last-child > a {
+        font-size: 26px;
+    }
     .wrap__video .wrap__video-right a {
         margin: 45px auto;
     }

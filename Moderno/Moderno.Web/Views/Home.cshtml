@@ -2,7 +2,7 @@
 @{
     Layout = "Master.cshtml";
     var home = (IPublishedContent)CurrentPage.AncestorOrSelf(1);
-    var cate = home.Children.Where(x => x.DocumentTypeAlias != "pageNotFound");
+    var cate = home.Children.Where(x => x.DocumentTypeAlias != "pageNotFound" && x.DocumentTypeAlias != "blog" );
 }
 
 <div class="wrap__categories">
