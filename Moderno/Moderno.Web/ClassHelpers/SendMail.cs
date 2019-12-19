@@ -32,12 +32,12 @@ namespace Moderno.Web.ClassHelpers
         {
             SendRecruitment(subject, sendTo, name, email, phonenumber, position);
         }
-        public static void SendContact(string subject, List<string> sendTo, string name, string email, string phonenumber, string address, string acreage)
+        public static void SendContact(string subject, List<string> sendTo, string name, string email, string phonenumber, string message, string acreage)
         {
             var newMessage = EmailSender.CreateNoReplyEmail();
             newMessage.To = sendTo.Count > 0 ? sendTo : new List<string> { "nguyenducnhat05@gmail.com" };
             newMessage.Subject = subject;
-            newMessage.Body = TextTemplate.Render("contact", new { name, email, phonenumber, address, acreage });
+            newMessage.Body = TextTemplate.Render("contact", new { name, email, phonenumber, message, acreage });
             EmailSender.Send(newMessage);
         }
         public static void SendContactMail(string subject, List<string> sendTo, string name, string email, string phonenumber, string address, string acreage)

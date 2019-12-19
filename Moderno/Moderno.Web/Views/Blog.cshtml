@@ -3,7 +3,7 @@
     Layout = "Master.cshtml";
     var home = (IPublishedContent)CurrentPage.AncestorOrSelf(1);
     var current = (IPublishedContent)CurrentPage;
-    var lstItems = current.Descendants("blogItem").OrderByDescending(x => x.CreateDate).Take(9);
+    var lstItems = current.Descendants("blogItem").OrderByDescending(x => x.SortOrder).Take(9);
 }
 
 @* the fun starts here *@
@@ -54,5 +54,5 @@
         }
     </div>
     @Html.Partial("~/Views/Partials/_Contact.cshtml")
-    @Html.Partial("~/Views/Partials/Layout/_SocialMedia.cshtml")
 </div>
+@Html.Partial("~/Views/Partials/Layout/_Footer.cshtml")

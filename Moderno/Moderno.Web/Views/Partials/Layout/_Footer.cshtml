@@ -1,0 +1,42 @@
+﻿@inherits UmbracoTemplatePage
+@{
+    var home = CurrentPage.AncestorOrSelf(1);
+    var logo = Umbraco.TypedMedia(home.GetPropertyValue<int>("logo"));
+}
+
+<div class="company__info">
+    <div class="company__info-address d-inline-block">
+        <ul>
+            <li>
+                <i class="mysprite ct-phone"></i>
+                <div class="text">
+                    <a href="tel:@(!string.IsNullOrEmpty(home.GetPropertyValue<string>("phoneNumber")) ? home.GetPropertyValue<string>("phoneNumber").Replace(" ","") : "")">@home.GetPropertyValue("phoneNumber")</a>
+                </div>
+            </li>
+            <li>
+                <i class="mysprite ct-mail"></i>
+                <div class="text">
+                    <a href="mailto:@(home.GetPropertyValue("email"))">@(home.GetPropertyValue("email"))</a>
+                </div>
+            </li>
+            <li>
+                <i class="mysprite ct-address"></i>
+                <div class="text">
+                    Địa chỉ: @home.GetPropertyValue("address")
+                </div>
+            </li>
+            <li>
+                <i class="mysprite ct-openclose"></i>
+                <div class="text">Open - Close: @home.GetPropertyValue("openCloseTime")</div>
+            </li>
+        </ul>
+    </div>
+    <div class="company__info-social d-inline-block">
+        @Html.Partial("~/Views/Partials/Layout/_SocialMedia.cshtml")
+    </div>
+    <div class="company__info-maps d-inline-block text-right">
+        <a href="@home.Url">
+            <img src="@(logo != null ? logo.Url : "/images/logo.png")" alt="Moderno" />
+        </a>
+    </div>
+</div>

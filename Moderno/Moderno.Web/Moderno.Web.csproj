@@ -483,6 +483,7 @@
     <Content Include="Views\Blog.cshtml" />
     <Content Include="Views\BlogItem.cshtml" />
     <Content Include="Views\Partials\Blog\_BlogItem.cshtml" />
+    <Content Include="Views\Partials\Layout\_Footer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

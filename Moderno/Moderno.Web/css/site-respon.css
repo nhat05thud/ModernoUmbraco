@@ -157,6 +157,13 @@
         width: 100%;
         margin-bottom: 30px;
     }
+    .company__info .company__info-address, .company__info .company__info-social, .company__info .company__info-maps {
+        width: 100%;
+    }
+    .company__info .company__info-maps.text-right {
+        text-align: center;
+        margin-top: 30px;
+    }
 }
 @media screen and (min-width: 640px) and (max-width: 992px) {
     .wrap__categories .item .circle {
@@ -281,6 +288,9 @@
     .wrap__company,
     .wrap__project, .wrap__procedure {
         padding: 15px 0 30px;
+    }
+    .wrapper__form .item:not(.item__text-area) {
+        width: 100%;
     }
 }
 @media screen and (max-width: 480px) {

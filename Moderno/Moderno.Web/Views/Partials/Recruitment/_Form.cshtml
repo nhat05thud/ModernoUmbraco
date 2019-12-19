@@ -2,28 +2,22 @@
 @{
 }
 @Html.AntiForgeryToken()
-<label class="form__input">
-    @Html.TextBoxFor(x => x.Name, new { placeholder = " " })
-    <span class="label">Họ & Tên</span>
-    <span class="border"></span>
-    @Html.ValidationMessageFor(x => x.Name)
-</label>
-<label class="form__input">
-    @Html.TextBoxFor(x => x.PhoneNumber, new { placeholder = " " })
-    <span class="label">Số điện thoại</span>
-    <span class="border"></span>
-    @Html.ValidationMessageFor(x => x.PhoneNumber)
-</label>
-<label class="form__input">
-    @Html.TextBoxFor(x => x.Email, new { placeholder = " " })
-    <span class="label">Email</span>
-    <span class="border"></span>
-    @Html.ValidationMessageFor(x => x.Email)
-</label>
-<label class="form__input">
-    @Html.TextBoxFor(x => x.Position, new { placeholder = " " })
-    <span class="label">Vị trí ứng tuyển</span>
-    <span class="border"></span>
-    @Html.ValidationMessageFor(x => x.Position)
-</label>
+<div class="wrapper__form">
+    <div class="item">
+        @Html.TextBoxFor(x => x.Name, new { placeholder = "Họ & Tên" })
+        @Html.ValidationMessageFor(x => x.Name)
+    </div>
+    <div class="item">
+        @Html.TextBoxFor(x => x.PhoneNumber, new { placeholder = "Số điện thoại" })
+        @Html.ValidationMessageFor(x => x.PhoneNumber)
+    </div>
+    <div class="item">
+        @Html.TextBoxFor(x => x.Email, new { placeholder = "Email" })
+        @Html.ValidationMessageFor(x => x.Email)
+    </div>
+    <div class="item">
+        @Html.TextBoxFor(x => x.Position, new { placeholder = "Vị trí ứng tuyển" })
+        @Html.ValidationMessageFor(x => x.Position)
+    </div>
+</div>
 <div class="loading_div"></div>
