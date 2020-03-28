@@ -18,8 +18,41 @@
     <div class="item">
         @Html.TextBoxFor(x => x.Acreage, new { placeholder = "Diện tích công trình" })
     </div>
-    <div class="item item__text-area">
-        @Html.TextAreaFor(x => x.Message, new { placeholder = "Ghi chú & yêu cầu" })
+    <div class="item">
+        <div class="item-radio">
+            <label>
+                @Html.RadioButtonFor(x => x.CheckValue, "Tư vấn phong cách, phong thủy, vật liệu", new { @checked = "checked" })
+                Tư vấn phong cách, phong thủy, vật liệu
+                <span class="checkmark"></span>
+            </label>
+        </div>
+    </div>
+    <div class="item">
+        <div class="item-radio">
+            <label>
+                @Html.RadioButtonFor(x => x.CheckValue, "Xem công trình thực tế", new {})
+                Xem công trình thực tế
+                <span class="checkmark"></span>
+            </label>
+        </div>
+    </div>
+    <div class="item">
+        <div class="item-radio">
+            <label>
+                @Html.RadioButtonFor(x => x.CheckValue, "Bố trí mặt bằng, công năng, concept", new {})
+                Bố trí mặt bằng, công năng, concept
+                <span class="checkmark"></span>
+            </label>
+        </div>
+    </div>
+    <div class="item">
+        <div class="item-radio">
+            <label>
+                @Html.RadioButtonFor(x => x.CheckValue, "Báo giá chi tiết thi công", new {})
+                Báo giá chi tiết thi công
+                <span class="checkmark"></span>
+            </label>
+        </div>
     </div>
 </div>
 <div class="loading_div"></div>

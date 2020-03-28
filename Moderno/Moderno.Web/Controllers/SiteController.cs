@@ -81,7 +81,7 @@ namespace Moderno.Web.Controllers
                     }
                 }
                 SendMail.SendContact("Đăng ký tư vấn", sendTo, model.Name, model.Email,
-                    model.PhoneNumber, model.Message, model.Acreage);
+                    model.PhoneNumber, model.CheckValue, model.Acreage);
             }
             catch (Exception ex)
             {

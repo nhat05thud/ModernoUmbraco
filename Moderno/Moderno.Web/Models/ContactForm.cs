@@ -13,5 +13,6 @@ namespace Moderno.Web.Models
         public string PhoneNumber { get; set; }
         public string Message { get; set; }
         public string Acreage { get; set; }
+        public string CheckValue { get; set; }
     }
 }

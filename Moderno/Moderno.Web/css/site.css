@@ -451,12 +451,12 @@ header {
         text-align: center;
         transition: all .5s ease;
         display: inline-block;
-        margin: 0 30px;
+        margin: 0 10px;
     }
 
 .wrap__video .wrap__video-right a {
     line-height: 60px;
-    margin: 67px auto;
+    margin: 20px auto;
     display: block;
 }
 
@@ -699,7 +699,68 @@ header {
     border-radius: 20px;
     line-height: 1.2;
 }
-    
+        .wrapper__form .item .item-radio {
+            background: #fff;
+            border-radius: 30px;
+            padding: 0 15px;
+        }
+.wrapper__form .item label {
+    font-size: 24px;
+    color: #000;
+    text-transform: uppercase;
+    padding: 12px 15px 7px 35px;
+}
+.wrapper__form .item input[type="radio"] {
+    margin-right: 10px;
+}
+        .wrapper__form .item label {
+            display: block;
+            position: relative;
+            cursor: pointer;
+            font-size: 22px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+            .wrapper__form .item label input[type="radio"] {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+            }
+.checkmark {
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    background-color: #000;
+    border-radius: 50%;
+}
+.wrapper__form .item label:hover input[type="radio"] ~ .checkmark {
+    background-color: #000;
+}
+.wrapper__form .item label input[type="radio"]:checked ~ .checkmark {
+    background-color: #000;
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.wrapper__form .item label input[type="radio"]:checked ~ .checkmark:after {
+    display: block;
+}
+.wrapper__form .item label .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #fff;
+}
 /**/
 .company__info {
     font-size: 0;
@@ -724,7 +785,7 @@ header {
         }
         @media screen and (max-width: 1220px) and (min-width: 991px) {
             .company__info .company__info-social .main__follow a {
-            margin: 0 15px;
+            margin: 0 5px;
             width: 45px;
             height: 45px;
         }
