@@ -182,7 +182,7 @@ header {
                 width: 100%;
             }
 
-        header .left__header span {
+        header .left__header h1 {
             font-size: 28px; /*14px*/
             width: calc(100% - 165px);
             padding-left: 15px;
@@ -192,8 +192,9 @@ header {
             line-height: 30px;
             letter-spacing: 3px;
             padding-top: 4px;
+			margin: 0;
         }
-        header .left__header span:before {
+        header .left__header h1:before {
             position: absolute;
             content: "";
             background: #fff;
@@ -348,7 +349,7 @@ header {
             top: 0;
         }
 
-            .wrap__categories .item .circle p {
+            .wrap__categories .item .circle h2 {
                 position: absolute;
                 top: 50%;
                 width: 100%;
@@ -361,7 +362,7 @@ header {
                 -ms-transform: translateY(-50%);
                 -o-transform: translateY(-50%);
                 transform: translateY(-50%);
-                
+                margin: 0;
                 font-weight: bold;
                 letter-spacing: 3px;
                 padding-top: 10px;
@@ -375,7 +376,7 @@ header {
             transform: scale(1.1);
             background: rgba(0, 0, 0, 0.8);
         }
-            .wrap__categories .item a:hover .circle p {
+            .wrap__categories .item a:hover .circle h2 {
                 color: #fff;
             }
 /**/
@@ -707,7 +708,6 @@ header {
 .wrapper__form .item label {
     font-size: 24px;
     color: #000;
-    text-transform: uppercase;
     padding: 12px 15px 7px 35px;
 }
 .wrapper__form .item input[type="radio"] {

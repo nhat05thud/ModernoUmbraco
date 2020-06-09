@@ -68,18 +68,19 @@ namespace Moderno.Web.Controllers
                 var culture = CultureInfo.CurrentCulture;
                 var root = Services.ContentService.GetRootContent().First(x => x.GetCulture().Name == culture.Name);
                 var sendTo = new List<string>();
-                if (root != null)
-                {
-                    if (!string.IsNullOrEmpty(root.GetValue<string>("emailManager")))
-                    {
-                        sendTo.Add(root.GetValue<string>("emailManager"));
-                    }
+                //if (root != null)
+                //{
+                //    if (!string.IsNullOrEmpty(root.GetValue<string>("emailManager")))
+                //    {
+                //        sendTo.Add(root.GetValue<string>("emailManager"));
+                //    }
 
-                    if (!string.IsNullOrEmpty(root.GetValue<string>("emailRecruiter")))
-                    {
-                        sendTo.Add(root.GetValue<string>("emailRecruiter"));
-                    }
-                }
+                //    if (!string.IsNullOrEmpty(root.GetValue<string>("emailRecruiter")))
+                //    {
+                //        sendTo.Add(root.GetValue<string>("emailRecruiter"));
+                //    }
+                //}
+                sendTo.Add("nguyenducnhat05@gmail.com");
                 SendMail.SendContact("Đăng ký tư vấn", sendTo, model.Name, model.Email,
                     model.PhoneNumber, model.CheckValue, model.Acreage);
             }
