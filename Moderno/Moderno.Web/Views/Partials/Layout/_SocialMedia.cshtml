@@ -2,10 +2,10 @@
 @{
     var home = (IPublishedContent)CurrentPage.AncestorOrSelf(1);
 }
-<div class="main__follow">
-    <a href="@home.GetPropertyValue("facebook")" target="_blank"><i class="fa fa-facebook"></i></a>
-    <a href="@home.GetPropertyValue("youtube")" target="_blank"><i class="fa fa-youtube-play"></i></a>
-    <a href="@home.GetPropertyValue("instagram")" target="_blank"><i class="fa fa-instagram"></i></a>
-    <a href="@home.GetPropertyValue("pinterest")" target="_blank"><i class="fa fa-pinterest"></i></a>
-    <a href="@home.GetPropertyValue("behance")" target="_blank"><i class="fa fa-behance"></i></a>
+<div class="main__follow" itemscope itemtype="http://schema.org/Organization">
+    <a href="@home.GetPropertyValue("facebook")" itemprop="sameAs" target="_blank"><i class="fa fa-facebook"></i></a>
+    <a href="@home.GetPropertyValue("youtube")" itemprop="sameAs" target="_blank"><i class="fa fa-youtube-play"></i></a>
+    <a href="@home.GetPropertyValue("instagram")" itemprop="sameAs" target="_blank"><i class="fa fa-instagram"></i></a>
+    <a href="@home.GetPropertyValue("pinterest")" itemprop="sameAs" target="_blank"><i class="fa fa-pinterest"></i></a>
+    <a href="@home.GetPropertyValue("behance")" itemprop="sameAs" target="_blank"><i class="fa fa-behance"></i></a>
 </div>

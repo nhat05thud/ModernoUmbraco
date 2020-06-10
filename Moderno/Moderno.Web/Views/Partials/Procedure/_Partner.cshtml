@@ -10,7 +10,7 @@
             var thumb = Umbraco.TypedMedia(item.GetPropertyValue<int>("image"));
             <div class="item">
                 <a href="@item.GetPropertyValue("link")">
-                    <img class="owl-lazy" data-src="@(thumb != null ? thumb.GetCropUrl(345, 184, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=345&height=184&bgcolor=fff&slimmage=true&rnd=" + item.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="" />
+                    <img class="owl-lazy" data-src="@(thumb != null ? thumb.GetCropUrl(345, 184, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=345&height=184&bgcolor=fff&slimmage=true&rnd=" + item.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="@item.Name" />
                 </a>
             </div>
         }

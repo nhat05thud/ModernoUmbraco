@@ -4,21 +4,35 @@
     var home = (IPublishedContent)CurrentPage.AncestorOrSelf(1);
     var current = (IPublishedContent)CurrentPage;
     var projectItems = Model.Content.Site().FirstChild("project").Descendants("projectItem").OrderByDescending(x => x.CreateDate).Take(7).ToList();
+    var logo = Umbraco.TypedMedia(home.GetPropertyValue<int>("logo"));
 }
 
 @* the fun starts here *@
-
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".wrap-content img").first().wrapInner("a").parent().attr("itemprop", "image");
+    });
+</script>
 <div class="wrap__procedure">
     @Html.Partial("~/Views/Partials/Procedure/_Banner.cshtml")
     <div class="border__bottom">
         @Html.Partial("~/Views/Partials/Layout/_SocialMedia.cshtml")
     </div>
     <div class="procedure__content_wrapper">
-        <div class="procedure__content-left d-inline-block">
-            <h1>@current.Name</h1>
-            <div class="wrap-content">
+        <div class="procedure__content-left d-inline-block" itemscope itemtype="https://schema.org/Article">
+            <a itemprop="mainEntityOfPage" href="@(Request.Url != null ? Request.Url.AbsoluteUri : "#")"><h4 itemprop="name">@current.Name</h4></a>
+            <div class="wrap-content" itemprop="text">
                 @current.GetPropertyValue("content")
             </div>
+            <p class="hidden" itemprop="headline">@current.Name</p>
+            <p class="hidden" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                <span itemprop="name">Moderno</span>
+            </p>
+            <p class="hidden" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+                <meta itemprop="name" content="Moderno">
+            </p>
+            <p class="hidden" itemprop="dateModified">@current.UpdateDate.ToString("dd/MM/yyyy")</p>
+            <p class="hidden" itemprop="datePublished">@current.CreateDate.ToString("dd/MM/yyyy")</p>
         </div>
         <div class="procedure__content-right d-inline-block">
             <div class="text-center">
@@ -34,7 +48,7 @@
                     @foreach (var item in projectItems)
                     {
                         var thumb = Umbraco.TypedMedia(item.GetPropertyValue<int>("image"));
-                        <div class="item">
+                        <div class="item" itemscope itemtype="https://schema.org/Project">
                             <div class="wrap-item">
                                 <div class="img">
                                     <a href="@item.Url">
@@ -42,8 +56,8 @@
                                     </a>
                                 </div>
                                 <div class="content">
-                                    <a href="@item.Url">@item.Name</a>
-                                    <div class="desc">
+                                    <a href="@item.Url" itemprop="name">@item.Name</a>
+                                    <div class="desc" itemprop="description">
                                         @Umbraco.Truncate(item.GetPropertyValue<string>("content"), 50)
                                     </div>
                                 </div>

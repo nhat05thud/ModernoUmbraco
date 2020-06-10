@@ -4,19 +4,31 @@
     Layout = "Master.cshtml";
     var home = (IPublishedContent)CurrentPage.AncestorOrSelf(1);
     var current = (IPublishedContent)CurrentPage;
+    var logo = Umbraco.TypedMedia(home.GetPropertyValue<int>("logo"));
 }
 
-<div class="wrap__project">
+<div class="wrap__project" itemscope itemtype="https://schema.org/Article">
     <div class="project__details">
         <div class="project__details-content content">
             <div class="w900 custom__width">
-                <h1>@current.Name</h1>
-                <p class="location">@current.GetPropertyValue("location")</p>
-                <p class="acreage">Diện tích: @current.GetPropertyValue("acreage")</p>
-                <p class="acreage">Năm hoàn thành: @current.GetPropertyValue("yearComplete")</p>
-                <div class="wrap-content">
+                <a itemprop="mainEntityOfPage" href="@(Request.Url != null ? Request.Url.AbsoluteUri : "#")"><h4 itemprop="name">@current.Name</h4></a>
+                <div itemprop="description">
+                    <p class="location">@current.GetPropertyValue("location")</p>
+                    <p class="acreage">Diện tích: @current.GetPropertyValue("acreage")</p>
+                    <p class="acreage">Năm hoàn thành: @current.GetPropertyValue("yearComplete")</p>
+                </div>
+                <div class="wrap-content" itemprop="text">
                     @current.GetPropertyValue("content")
                 </div>
+                <p class="hidden" itemprop="headline">@current.Name</p>
+                <p class="hidden" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <span itemprop="name">Moderno</span>
+                </p>
+                <p class="hidden" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+                    <meta itemprop="name" content="Moderno">
+                </p>
+                <p class="hidden" itemprop="dateModified">@current.UpdateDate.ToString("dd/MM/yyyy")</p>
+                <p class="hidden" itemprop="datePublished">@current.CreateDate.ToString("dd/MM/yyyy")</p>
             </div>
         </div>
     </div>
@@ -53,6 +65,9 @@
                 </div>
             }
         </div>
+        <div class="hidden">
+            <a href="@lstMediaFirst.First().Url" itemprop="image"></a>
+        </div>
         <div class="contact__info text-center" style="padding: 0 0 15px;">
             <div class="contact__item"><a href="@(!string.IsNullOrEmpty(current.GetPropertyValue<string>("realityVideo")) ? current.GetPropertyValue<string>("realityVideo") : "javascript:void(0)")" target="_blank">VIDEO THỰC TẾ</a></div>
             <div class="contact__item contact__hotline">
@@ -78,38 +93,41 @@
         <div class="project__images" id="list-image-second">
             @foreach (var child in items)
             {
-            <div class="wrap__list-images">
-                @foreach (var item in child)
-                {
-                    var lstItemFirst = new List<int> { 1, 2 };
-                    var lstItemSecond = new List<int> { 3, 4, 5 };
-                    if (lstItemFirst.Contains(child.IndexOf(item)))
+                <div class="wrap__list-images">
+                    @foreach (var item in child)
                     {
-                        <div class="item item-2 hover__15">
-                            <a data-fancybox="@(items.IndexOf(child) == 0 ? "gallery_1" : "")" href="@(item.Url)">
-                                <img class="@(items.IndexOf(child) == 0 ? "lazyload" : "")" data-original="@(item.Url)" alt="@current.Name" />
-                            </a>
-                        </div>
+                        var lstItemFirst = new List<int> { 1, 2 };
+                        var lstItemSecond = new List<int> { 3, 4, 5 };
+                        if (lstItemFirst.Contains(child.IndexOf(item)))
+                        {
+                            <div class="item item-2 hover__15">
+                                <a data-fancybox="@(items.IndexOf(child) == 0 ? "gallery_1" : "")" href="@(item.Url)">
+                                    <img class="@(items.IndexOf(child) == 0 ? "lazyload" : "")" data-original="@(item.Url)" alt="@current.Name" />
+                                </a>
+                            </div>
+                        }
+                        else if (lstItemSecond.Contains(child.IndexOf(item)))
+                        {
+                            <div class="item item-3 hover__15">
+                                <a data-fancybox="@(items.IndexOf(child) == 0 ? "gallery_1" : "")" href="@(item.Url)">
+                                    <img class="@(items.IndexOf(child) == 0 ? "lazyload" : "")" data-original="@(item.Url)" alt="@current.Name" />
+                                </a>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="item item-1 hover__15">
+                                <a data-fancybox="@(items.IndexOf(child) == 0 ? "gallery_1" : "")" href="@(item.Url)">
+                                    <img class="@(items.IndexOf(child) == 0 ? "lazyload" : "")" data-original="@(item.Url)" alt="@current.Name" />
+                                </a>
+                            </div>
+                        }
                     }
-                    else if (lstItemSecond.Contains(child.IndexOf(item)))
-                    {
-                        <div class="item item-3 hover__15">
-                            <a data-fancybox="@(items.IndexOf(child) == 0 ? "gallery_1" : "")" href="@(item.Url)">
-                                <img class="@(items.IndexOf(child) == 0 ? "lazyload" : "")" data-original="@(item.Url)" alt="@current.Name" />
-                            </a>
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="item item-1 hover__15">
-                            <a data-fancybox="@(items.IndexOf(child) == 0 ? "gallery_1" : "")" href="@(item.Url)">
-                                <img class="@(items.IndexOf(child) == 0 ? "lazyload" : "")" data-original="@(item.Url)" alt="@current.Name" />
-                            </a>
-                        </div>
-                    }
-                }
-            </div>
+                </div>
             }
+        </div>
+        <div class="hidden">
+            <a href="@lstMediaSecond.First().Url" itemprop="image"></a>
         </div>
         if (lstMediaSecond.Count() > 5)
         {

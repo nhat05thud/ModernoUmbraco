@@ -36,7 +36,9 @@ a {
 p {
     margin: 0;
 }
-
+.hidden {
+    display: none !important;
+}
 #wrapper {
     overflow: hidden;
     position: absolute;
@@ -349,7 +351,7 @@ header {
             top: 0;
         }
 
-            .wrap__categories .item .circle h2 {
+            .wrap__categories .item .circle h4 {
                 position: absolute;
                 top: 50%;
                 width: 100%;
@@ -605,7 +607,7 @@ header {
 
     }
 
-.company__register .company__register-form h1 {
+.company__register .company__register-form h4 {
     text-transform: uppercase;
     font-weight: normal;
     font-size: 34px; /*24px*/
@@ -890,8 +892,8 @@ header {
         opacity: 0;
     }
 
-        .project__category .item .content h1,
-        .blog__category .item .content h1 {
+        .project__category .item .content h4,
+        .blog__category .item .content h4 {
             font-size: 28px; /*22px*/
             font-weight: normal;
             margin: 0 0 5px;
@@ -945,7 +947,7 @@ header {
     .blog__category .item .content p.date {
         margin-bottom: 5px;
     }
-    .blog__category .item .content h1 {
+    .blog__category .item .content h4 {
         color: #000;
         font-weight: bold;
     }
@@ -1113,7 +1115,7 @@ header {
         margin-top: 30px;
     }
 
-        .project__details .content h1 {
+        .project__details .content h4 {
             font-size: 48px;
             font-weight: normal;
             text-transform: uppercase;
@@ -1121,7 +1123,7 @@ header {
             letter-spacing: 3px;
         }
 @media screen and (max-width: 550px) {
-    .project__details .content h1 {
+    .project__details .content h4 {
         font-size: 7vw;
     }
 }
@@ -1280,7 +1282,7 @@ header {
             right: calc(100% + 100px);
         }
 
-        .procedure__steps .procedure__steps-title h1 {
+        .procedure__steps .procedure__steps-title h4 {
             color: #fff;
             text-transform: uppercase;
             font-weight: normal;
@@ -1291,8 +1293,8 @@ header {
             padding: 5px 0 0;
         }
 
-            .procedure__steps .procedure__steps-title h1:before,
-            .procedure__steps .procedure__steps-title h1:after {
+            .procedure__steps .procedure__steps-title h4:before,
+            .procedure__steps .procedure__steps-title h4:after {
                 position: absolute;
                 content: "";
                 background: #111011;
@@ -1304,11 +1306,11 @@ header {
                 border-radius: 50%;
             }
 
-            .procedure__steps .procedure__steps-title h1:before {
+            .procedure__steps .procedure__steps-title h4:before {
                 left: calc(100% + 125px);
             }
 
-            .procedure__steps .procedure__steps-title h1:after {
+            .procedure__steps .procedure__steps-title h4:after {
                 right: calc(100% + 125px);
             }
 
@@ -1402,7 +1404,7 @@ header {
         padding: 0 15px;
     }
 
-        .procedure__content_wrapper .procedure__content-left h1 {
+        .procedure__content_wrapper .procedure__content-left h4 {
             font-size: 32px;
             font-weight: bold;
             text-transform: uppercase;
@@ -1908,7 +1910,7 @@ footer {
     margin: 25px 0 17px;
 }
 
-.page-loading .loading__wrap > h1 {
+.page-loading .loading__wrap > p {
     margin: 0;
     font-weight: normal;
     font-size: 56px; /*38px*/
@@ -2069,7 +2071,7 @@ footer {
 .wrap__blog .wrap-content {
     font-size: 24px;
 }
-.wrap__blog .content > h1 {
+.wrap__blog .content > a > h4 {
     font-size: 48px;
     font-weight: bold;
     text-transform: uppercase;

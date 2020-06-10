@@ -2,18 +2,28 @@
 @{
     Layout = "Master.cshtml";
     var current = (IPublishedContent)CurrentPage;
+    var home = (IPublishedContent)CurrentPage.AncestorOrSelf(1);
     var moreItems = current.Parent.Children().Where(x => x.Id != current.Id).OrderBy(x => Guid.NewGuid()).ToList().Take(3);
     var moreImages = current.GetPropertyValue<IEnumerable<IPublishedContent>>("moreImage");
+    var logo = Umbraco.TypedMedia(home.GetPropertyValue<int>("logo"));
 }
 
 @* the fun starts here *@
-
-<div class="wrap__blog">
+<div class="wrap__blog" itemscope itemtype="https://schema.org/Article">
     <div class="content">
-        <h1 class="text-center">@current.Name</h1>
-        <div class="wrap-content">
+        <a itemprop="mainEntityOfPage" href="@(Request.Url != null ? Request.Url.AbsoluteUri : "#")"><h4 itemprop="name">@current.Name</h4></a>
+        <div class="wrap-content" itemprop="text">
             @current.GetPropertyValue("content")
         </div>
+        <p class="hidden" itemprop="headline">@current.Name</p>
+        <p class="hidden" itemprop="author" itemscope itemtype="https://schema.org/Person">
+            <span itemprop="name">Moderno</span>
+        </p>
+        <p class="hidden" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+            <meta itemprop="name" content="Moderno">
+        </p>
+        <p class="hidden" itemprop="dateModified">@current.UpdateDate.ToString("dd/MM/yyyy")</p>
+        <p class="hidden" itemprop="datePublished">@current.CreateDate.ToString("dd/MM/yyyy")</p>
     </div>
     @if (moreImages != null)
     {
@@ -22,7 +32,7 @@
                 @foreach (var item in moreImages)
                 {
                     <div class="item">
-                        <img src="@(item.GetCropUrl(1600, 769, furtherOptions: "&slimmage=true"))" alt="" />
+                        <img src="@(item.GetCropUrl(1600, 769, furtherOptions: "&slimmage=true"))" alt="@current.Name" />
                     </div>
                 }
             </div>
@@ -30,10 +40,13 @@
                 @foreach (var item in moreImages)
                 {
                     <div class="item">
-                        <img src="@(item.GetCropUrl(145, 100, furtherOptions: "&slimmage=true"))" alt="" />
+                        <img src="@(item.GetCropUrl(145, 100, furtherOptions: "&slimmage=true"))" alt="@current.Name" />
                     </div>
                 }
             </div>
+        </div>
+        <div class="hidden">
+            <a href="@moreImages.First().Url" itemprop="image"></a>
         </div>
     }
     <div class="more-items">
@@ -49,7 +62,7 @@
                             <div class="content">
                                 <a href="@item.Url">
                                     <p class="date">@(item.CreateDate.ToString("dd.MM.yyyy"))</p>
-                                    <h1>@item.Name</h1>
+                                    <h4>@item.Name</h4>
                                     <p class="hashtag text-right">@item.GetPropertyValue("hashTag")</p>
                                 </a>
                             </div>

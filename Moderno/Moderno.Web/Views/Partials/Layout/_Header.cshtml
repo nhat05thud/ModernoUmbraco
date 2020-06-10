@@ -11,15 +11,15 @@
             <a class="d-inline-block" href="/">
                 <img src="@(logo != null ? logo.Url : "/images/logo.png")" alt="Moderno"/>
             </a>
-            <h1 class="d-inline-block">@home.GetPropertyValue("slogan")</h1>
+            <h1 class="d-inline-block" itemprop="text" itemscope itemtype="https://schema.org/slogan">@home.GetPropertyValue("slogan")</h1>
         </div>
         <div class="right__header d-inline-block text-right">
             <nav class="d-inline-block">
-                <ul id="menu" class="desktop-992">
+                <ul id="menu" class="desktop-992" itemscope itemtype="https://schema.org/ItemPage">
                     @foreach (var childPage in menu)
                     {
                         <li class="@(childPage.Id == CurrentPage.Id ? "active" : null)">
-                            <a href="@childPage.Url">@childPage.Name</a>
+                            <a href="@childPage.Url" itemprop="name">@childPage.Name</a>
                         </li>
                     }
                 </ul>

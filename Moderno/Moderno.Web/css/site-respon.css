@@ -9,6 +9,16 @@
     .wrap__categories .item .circle p {
         font-size: 44px; /*24px*/
     }
+    .company__info .company__info-social .main__follow a {
+        margin:0 15px;
+        width: 60px;
+        height: 60px;
+    }
+
+    .company__info .company__info-social .main__follow a i {
+        font-size: 25px;
+        line-height: 55px
+    }
 }
 @media screen and (max-width: 1199px){
     header .right__header nav:before {

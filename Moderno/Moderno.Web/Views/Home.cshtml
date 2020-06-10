@@ -9,7 +9,7 @@
     @foreach (var item in cate)
     {
         var thumb = Umbraco.TypedMedia(item.GetPropertyValue<int>("image"));
-        <div class="item">
+        <div class="item"itemscope itemtype="https://schema.org/ItemPage">
             <a href="@item.Url">
                 @if (item.DocumentTypeAlias == "project")
                 {
@@ -20,7 +20,7 @@
                     <img src="@(thumb != null ? thumb.GetCropUrl(345, 535, furtherOptions: "&slimmage=true") : "/images/no-image.png?anchor=center&mode=BoxPad&width=345&height=535&bgcolor=fff&slimmage=true&rnd=" + item.UpdateDate.ToString("ddMMyyyhhmmss"))" alt="@item.Name" />
                 }
                 <div class="circle">
-                    <h2>@item.Name</h2>
+                    <h4 itemprop="name">@item.Name</h4>
                 </div>
             </a>
         </div>

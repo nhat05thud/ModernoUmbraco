@@ -6,28 +6,31 @@
 
 <div class="company__info">
     <div class="company__info-address d-inline-block">
-        <ul>
+        <ul itemscope itemtype="https://schema.org/Organization">
             <li>
                 <i class="mysprite ct-phone"></i>
                 <div class="text">
-                    <a href="tel:@(!string.IsNullOrEmpty(home.GetPropertyValue<string>("phoneNumber")) ? home.GetPropertyValue<string>("phoneNumber").Replace(" ","") : "")">@home.GetPropertyValue("phoneNumber")</a>
+                    <a href="tel:@(!string.IsNullOrEmpty(home.GetPropertyValue<string>("phoneNumber")) ? home.GetPropertyValue<string>("phoneNumber").Replace(" ","") : "")" itemprop="telephone">@home.GetPropertyValue("phoneNumber")</a>
                 </div>
             </li>
             <li>
                 <i class="mysprite ct-mail"></i>
                 <div class="text">
-                    <a href="mailto:@(home.GetPropertyValue("email"))">@(home.GetPropertyValue("email"))</a>
+                    <a href="mailto:@(home.GetPropertyValue<string>("email").Trim())" itemprop="email">@(home.GetPropertyValue<string>("email").Trim())</a>
                 </div>
             </li>
             <li>
                 <i class="mysprite ct-address"></i>
-                <div class="text">
+                <div class="text" itemprop="address">
                     Địa chỉ: @home.GetPropertyValue("address")
                 </div>
             </li>
             <li>
                 <i class="mysprite ct-openclose"></i>
-                <div class="text">Open - Close: @home.GetPropertyValue("openCloseTime")</div>
+                <div class="text" itemscope itemtype="https://schema.org/OpeningHoursSpecification">
+                    <Text itemprop="name">Open - Close:</Text>
+                    <time itemprop="opens">@(home.GetPropertyValue<string>("openCloseTime").Split('-')[0])</time>-<time itemprop="closes">@(home.GetPropertyValue<string>("openCloseTime").Split('-')[1])</time>
+                </div>
             </li>
         </ul>
     </div>
