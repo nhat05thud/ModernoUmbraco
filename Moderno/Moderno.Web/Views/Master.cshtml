@@ -16,14 +16,14 @@
     @Styles.Render("~/bundles/style")
 </head>
 <body>
-@Html.Partial("~/Views/Partials/Layout/_PageLoading.cshtml")
+    @Html.Partial("~/Views/Partials/Layout/_PageLoading.cshtml")
     <div id="wrapper">
         <div id="wrapper-in">
             @Html.Partial("~/Views/Partials/Layout/_Header.cshtml")
             <div id="main-content">
                 @RenderBody()
             </div>
-            <footer></footer>
+            <footer><p class="hidden">Copyright © @(DateTime.Now.Year) MODERNO. All Right Reserved. Thiết kế nội thất Moderno.</p></footer>
         </div>
         @Html.Partial("~/Views/Partials/Layout/_Audio.cshtml")
     </div>
